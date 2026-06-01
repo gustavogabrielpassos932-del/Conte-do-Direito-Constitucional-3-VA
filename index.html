@@ -1,0 +1,1503 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Relatório de estudo para prova: organização do Estado, federação brasileira, competências e intervenção.">
+  <title>Direito Constitucional | Organização do Estado</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f7f9;
+      --surface: #ffffff;
+      --surface-2: #eef3f8;
+      --ink: #17202a;
+      --muted: #5f6c7b;
+      --line: #d7dee8;
+      --accent: #0f766e;
+      --accent-2: #7c3aed;
+      --accent-3: #c2410c;
+      --good: #15803d;
+      --bad: #b91c1c;
+      --warn: #a16207;
+      --shadow: 0 18px 45px rgba(16, 24, 40, .10);
+      --radius: 8px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 82px;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, rgba(15, 118, 110, .08), rgba(246, 247, 249, 0) 360px),
+        var(--bg);
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; }
+
+    .skip-link {
+      position: absolute;
+      left: 12px;
+      top: -60px;
+      padding: 10px 12px;
+      background: var(--ink);
+      color: white;
+      border-radius: 6px;
+      z-index: 30;
+    }
+
+    .skip-link:focus { top: 12px; }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(246, 247, 249, .86);
+      border-bottom: 1px solid rgba(215, 222, 232, .9);
+    }
+
+    .topbar-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 12px 18px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand > div:last-child { min-width: 0; }
+
+    .mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: var(--ink);
+      color: white;
+      font-weight: 800;
+      letter-spacing: 0;
+      flex: 0 0 auto;
+    }
+
+    .brand strong {
+      display: block;
+      font-size: 15px;
+      line-height: 1.15;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .brand span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .top-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    button, .pill-link {
+      font: inherit;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--ink);
+      border-radius: 8px;
+      padding: 9px 11px;
+      cursor: pointer;
+      min-height: 40px;
+    }
+
+    button:hover, .pill-link:hover { border-color: #98a7b8; }
+    button:focus-visible, a:focus-visible {
+      outline: 3px solid rgba(15, 118, 110, .28);
+      outline-offset: 2px;
+    }
+
+    .layout {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 28px 18px 70px;
+      display: grid;
+      grid-template-columns: 270px minmax(0, 1fr);
+      gap: 24px;
+    }
+
+    aside {
+      position: sticky;
+      top: 78px;
+      align-self: start;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 20px rgba(16, 24, 40, .05);
+      overflow: hidden;
+    }
+
+    .toc-title {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      font-weight: 800;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      color: var(--muted);
+    }
+
+    nav a {
+      display: block;
+      padding: 9px 16px;
+      text-decoration: none;
+      color: #334155;
+      font-size: 14px;
+      border-left: 3px solid transparent;
+    }
+
+    nav a:hover {
+      background: var(--surface-2);
+      border-left-color: var(--accent);
+    }
+
+    main { min-width: 0; }
+
+    .hero {
+      padding: 34px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--accent);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: 12px;
+    }
+
+    h1, h2, h3 {
+      line-height: 1.18;
+      letter-spacing: 0;
+      margin: 0;
+      overflow-wrap: anywhere;
+    }
+
+    h1 {
+      font-size: clamp(31px, 5vw, 58px);
+      max-width: 900px;
+    }
+
+    h2 {
+      font-size: clamp(24px, 3vw, 34px);
+      margin-bottom: 14px;
+    }
+
+    h3 {
+      font-size: 19px;
+      margin-bottom: 10px;
+    }
+
+    p { margin: 0 0 12px; }
+
+    p, li, .eyebrow, .card strong, td, th {
+      overflow-wrap: anywhere;
+    }
+
+    .hero p:not(.eyebrow) {
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 760px;
+      margin-top: 16px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .meta {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fbfcfe;
+      min-width: 0;
+    }
+
+    .meta b {
+      display: block;
+      font-size: 20px;
+      color: var(--ink);
+    }
+
+    .meta span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    section {
+      margin-top: 22px;
+      padding: 26px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .section-lead {
+      color: var(--muted);
+      max-width: 850px;
+      margin-bottom: 18px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      background: #fbfcfe;
+    }
+
+    .card strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #0f172a;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(15, 118, 110, .10);
+      color: #115e59;
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 9px;
+    }
+
+    .tag.purple { background: rgba(124, 58, 237, .10); color: #5b21b6; }
+    .tag.orange { background: rgba(194, 65, 12, .10); color: #9a3412; }
+
+    ul, ol {
+      padding-left: 20px;
+      margin: 8px 0 0;
+    }
+
+    li { margin: 6px 0; }
+
+    .note {
+      border-left: 4px solid var(--accent);
+      background: rgba(15, 118, 110, .07);
+      padding: 14px 16px;
+      border-radius: 0 8px 8px 0;
+      margin: 14px 0;
+    }
+
+    .warning {
+      border-left-color: var(--warn);
+      background: rgba(161, 98, 7, .08);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      margin: 14px 0;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      min-width: 690px;
+      background: white;
+    }
+
+    th, td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #edf5f4;
+      color: #134e4a;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    .timeline {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .time-item {
+      display: grid;
+      grid-template-columns: 88px 1fr;
+      gap: 14px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfe;
+    }
+
+    .year {
+      font-weight: 900;
+      color: var(--accent-2);
+    }
+
+    .flash-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .flashcard {
+      min-height: 170px;
+      perspective: 1000px;
+    }
+
+    .flash-inner {
+      position: relative;
+      width: 100%;
+      min-height: 170px;
+      transition: transform .35s ease;
+      transform-style: preserve-3d;
+      cursor: pointer;
+    }
+
+    .flashcard.is-flipped .flash-inner { transform: rotateY(180deg); }
+
+    .front, .back {
+      position: absolute;
+      inset: 0;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfe;
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .back {
+      transform: rotateY(180deg);
+      background: #f4fbfa;
+      border-color: rgba(15, 118, 110, .35);
+    }
+
+    .hint {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    .quiz {
+      display: grid;
+      gap: 16px;
+    }
+
+    .question {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      background: #fbfcfe;
+    }
+
+    .question p {
+      font-weight: 750;
+      color: #0f172a;
+    }
+
+    .options {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .option {
+      width: 100%;
+      text-align: left;
+      background: white;
+      min-height: 44px;
+    }
+
+    .option.correct {
+      border-color: rgba(21, 128, 61, .7);
+      background: rgba(21, 128, 61, .08);
+    }
+
+    .option.wrong {
+      border-color: rgba(185, 28, 28, .65);
+      background: rgba(185, 28, 28, .07);
+    }
+
+    .feedback {
+      display: none;
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: var(--surface-2);
+      color: #334155;
+    }
+
+    .feedback.show { display: block; }
+
+    .scorebar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfe;
+      margin-bottom: 14px;
+    }
+
+    .mobile-nav { display: none; }
+
+    .footer {
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+      padding: 24px 0 0;
+    }
+
+    @media (max-width: 980px) {
+      .layout {
+        grid-template-columns: 1fr;
+        padding-top: 18px;
+      }
+
+      aside { display: none; }
+
+      .mobile-nav {
+        display: block;
+        width: 100%;
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 0 18px 14px;
+      }
+
+      .mobile-nav select {
+        width: 100%;
+        min-height: 44px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: white;
+        color: var(--ink);
+        padding: 8px 10px;
+        font: inherit;
+      }
+
+      .meta-grid, .grid.three, .flash-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 680px) {
+      .topbar-inner {
+        grid-template-columns: 1fr;
+        align-items: stretch;
+        width: 100vw;
+        max-width: 100vw;
+        overflow: hidden;
+      }
+
+      .top-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .top-actions button { width: 100%; }
+
+      .mobile-nav {
+        width: 100vw;
+        max-width: 100vw;
+      }
+
+      .layout {
+        width: 100vw;
+        max-width: 100vw;
+        padding-left: 18px;
+        padding-right: 18px;
+        overflow: hidden;
+      }
+
+      main {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+      }
+
+      .hero, section {
+        width: 100%;
+        max-width: 100%;
+        padding: 20px;
+      }
+
+      h1 {
+        max-width: min(100%, calc(100vw - 112px));
+        font-size: 27px;
+        line-height: 1.24;
+      }
+
+      h1 span {
+        display: block;
+      }
+
+      .eyebrow {
+        max-width: min(100%, calc(100vw - 112px));
+        font-size: 11px;
+        line-height: 1.4;
+      }
+
+      .hero p:not(.eyebrow) {
+        max-width: min(100%, calc(100vw - 112px));
+        font-size: 16px;
+      }
+
+      .meta-grid, .grid.two, .grid.three, .flash-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .time-item {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      table { min-width: 620px; }
+    }
+
+    @media print {
+      .topbar, aside, .mobile-nav, .top-actions, .skip-link { display: none !important; }
+      body { background: white; }
+      .layout { display: block; padding: 0; max-width: none; }
+      .hero, section, .card, .question { box-shadow: none; break-inside: avoid; }
+      .flash-grid { grid-template-columns: repeat(2, 1fr); }
+      .front, .back { position: static; min-height: auto; transform: none; }
+      .back { margin-top: 8px; }
+      .flash-inner { min-height: auto; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="mark" aria-hidden="true">CF</div>
+        <div>
+          <strong>Relatório de Estudo | Direito Constitucional</strong>
+          <span>Organização do Estado, Federação, competências e intervenção</span>
+        </div>
+      </div>
+      <div class="top-actions">
+        <button type="button" id="expandCards" title="Virar todos os flashcards">Ver respostas</button>
+        <button type="button" onclick="window.print()" title="Gerar PDF ou imprimir">Imprimir</button>
+      </div>
+    </div>
+    <div class="mobile-nav">
+      <label class="visually-hidden" for="jump"></label>
+      <select id="jump" aria-label="Ir para seção">
+        <option value="#panorama">Panorama</option>
+        <option value="#estado">Estado e formas</option>
+        <option value="#federacao">Federação</option>
+        <option value="#brasil">Federação brasileira</option>
+        <option value="#entes">Entes federativos</option>
+        <option value="#competencias">Competências</option>
+        <option value="#stf">Temas STF</option>
+        <option value="#intervencao">Intervenção</option>
+        <option value="#flashcards">Flashcards</option>
+        <option value="#questoes">Questões</option>
+      </select>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside aria-label="Sumário">
+      <div class="toc-title">Sumário</div>
+      <nav>
+        <a href="#panorama">Panorama para prova</a>
+        <a href="#estado">Estado e formas</a>
+        <a href="#federacao">Federação</a>
+        <a href="#brasil">Brasil na CF/88</a>
+        <a href="#entes">Entes federativos</a>
+        <a href="#competencias">Repartição de competências</a>
+        <a href="#stf">Precedentes e temas atuais</a>
+        <a href="#intervencao">Intervenção</a>
+        <a href="#flashcards">Flashcards</a>
+        <a href="#questoes">Questões</a>
+      </nav>
+    </aside>
+
+    <main id="conteudo">
+      <article class="hero" id="panorama">
+        <p class="eyebrow">Coleção Esquematizado | Direito Constitucional | 29ª ed. 2025</p>
+        <h1><span>Organização do Estado:</span><span> guia de revisão para prova</span></h1>
+        <p>Material sintético, estruturado para memorização e treino, elaborado a partir do texto indicado sobre noções preliminares, formas de Estado, Federação brasileira, competências constitucionais e intervenção.</p>
+        <div class="meta-grid" aria-label="Dados do estudo">
+          <div class="meta"><b>7</b><span>blocos centrais</span></div>
+          <div class="meta"><b>24</b><span>flashcards</span></div>
+          <div class="meta"><b>15</b><span>questões comentadas</span></div>
+          <div class="meta"><b>CF/88</b><span>artigos-chave</span></div>
+        </div>
+      </article>
+
+      <section id="estado">
+        <h2>1. Estado, Governo e Forma de Estado</h2>
+        <p class="section-lead">A primeira camada da matéria é conceitual. Em prova, o examinador costuma trocar soberania por autonomia, forma de Estado por forma de governo, ou sistema de governo por regime político.</p>
+
+        <div class="grid two">
+          <div class="card">
+            <span class="tag">Elementos do Estado</span>
+            <ul>
+              <li><strong>Soberania:</strong> poder supremo no plano interno e independência no plano externo.</li>
+              <li><strong>Finalidade:</strong> busca do bem comum.</li>
+              <li><strong>Povo:</strong> vínculo humano-jurídico do Estado.</li>
+              <li><strong>Território:</strong> base espacial de incidência da ordem jurídica.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <span class="tag purple">Tríade de organização</span>
+            <ul>
+              <li><strong>Forma de governo:</strong> República ou Monarquia.</li>
+              <li><strong>Sistema de governo:</strong> presidencialismo ou parlamentarismo.</li>
+              <li><strong>Forma de Estado:</strong> Estado unitário ou Federação.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="note">
+          <strong>Brasil:</strong> forma republicana de governo, sistema presidencialista e forma federativa de Estado. A República Federativa do Brasil é soberana; União, Estados, Distrito Federal e Municípios são autônomos.
+        </div>
+
+        <div class="table-wrap" role="region" aria-label="Comparação entre formas de Estado">
+          <table>
+            <thead>
+              <tr>
+                <th>Categoria</th>
+                <th>Ideia central</th>
+                <th>Ponto de prova</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Estado unitário</td>
+                <td>Um centro político decide para todo o território.</td>
+                <td>Pode haver descentralização administrativa, mas sem autonomia político-constitucional típica da federação.</td>
+              </tr>
+              <tr>
+                <td>Federação</td>
+                <td>Divisão espacial de poder entre entes autônomos.</td>
+                <td>A Constituição reparte competências e protege a autonomia federativa.</td>
+              </tr>
+              <tr>
+                <td>Estado regional/autonômico</td>
+                <td>Modelo intermediário, com descentralização legislativa.</td>
+                <td>Há único poder constituinte, mas pluralidade de fontes normativas regionais.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="federacao">
+        <h2>2. Federação</h2>
+        <p class="section-lead">A Federação nasce como técnica de distribuição territorial de poder. O núcleo é a autonomia constitucional dos entes, com indissolubilidade do vínculo federativo.</p>
+
+        <div class="timeline">
+          <div class="time-item">
+            <div class="year">1776</div>
+            <div>Independência das 13 colônias, que passam a se apresentar como Estados soberanos.</div>
+          </div>
+          <div class="time-item">
+            <div class="year">Confederação</div>
+            <div>Tratado internacional com direito de secessão. O vínculo é mais frágil.</div>
+          </div>
+          <div class="time-item">
+            <div class="year">1787</div>
+            <div>Convenção da Filadélfia estrutura a Federação dos EUA, sem direito de secessão.</div>
+          </div>
+          <div class="time-item">
+            <div class="year">Brasil</div>
+            <div>Federação por desagregação: Estado unitário centralizado que se descentraliza.</div>
+          </div>
+        </div>
+
+        <h3>Tipologias que mais caem</h3>
+        <div class="grid three">
+          <div class="card">
+            <span class="tag">Agregação</span>
+            <p>Estados soberanos cedem parcela de soberania para formar um Estado federal. Ex.: EUA, Alemanha, Suíça.</p>
+          </div>
+          <div class="card">
+            <span class="tag">Desagregação</span>
+            <p>Estado unitário se descentraliza e passa a adotar forma federativa. Ex.: Brasil, a partir da República e da Constituição de 1891.</p>
+          </div>
+          <div class="card">
+            <span class="tag">Dual x cooperativo</span>
+            <p>No dual, há separação rígida. No cooperativo, há atuação comum ou concorrente e aproximação entre entes.</p>
+          </div>
+          <div class="card">
+            <span class="tag purple">Simétrico x assimétrico</span>
+            <p>Simetria busca igualdade jurídica entre entes; assimetria admite tratamentos diferenciados por peculiaridades regionais.</p>
+          </div>
+          <div class="card">
+            <span class="tag purple">Orgânico</span>
+            <p>Há tendência de centralização intensa, com enfraquecimento real dos entes periféricos.</p>
+          </div>
+          <div class="card">
+            <span class="tag purple">Equilíbrio</span>
+            <p>Procura balancear unidade nacional e autonomia local, sem subordinação indevida.</p>
+          </div>
+        </div>
+
+        <div class="warning note">
+          <strong>Cuidado com duas ideias de centrípeto e centrífugo.</strong> Na origem histórica, EUA é centrípeto porque Estados soberanos se aglutinaram; Brasil é centrífugo porque o poder saiu do centro para os entes. Na repartição de competências, centrípeto significa concentração no ente central; centrífugo significa maior distribuição aos Estados.
+        </div>
+
+        <h3>Características da Federação</h3>
+        <div class="grid two">
+          <div class="card">
+            <ul>
+              <li>Descentralização política prevista na Constituição.</li>
+              <li>Repartição constitucional de competências.</li>
+              <li>Constituição rígida como base jurídica.</li>
+              <li>Inexistência do direito de secessão.</li>
+              <li>Soberania do Estado federal, e não dos entes.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <ul>
+              <li>Possibilidade de intervenção em situações excepcionais.</li>
+              <li>Auto-organização dos Estados por Constituições estaduais.</li>
+              <li>Representação dos Estados no Senado Federal.</li>
+              <li>STF como guardião da Constituição.</li>
+              <li>Repartição de receitas para equilíbrio federativo.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="brasil">
+        <h2>3. Federação Brasileira na CF/88</h2>
+        <p class="section-lead">A Constituição de 1988 organiza a República Federativa do Brasil como união indissolúvel dos Estados, Municípios e Distrito Federal. O art. 18 explicita União, Estados, DF e Municípios como entes autônomos.</p>
+
+        <div class="table-wrap" role="region" aria-label="Artigos fundamentais">
+          <table>
+            <thead>
+              <tr>
+                <th>Tema</th>
+                <th>Artigo</th>
+                <th>Memorize</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Fundamentos</td>
+                <td>Art. 1º</td>
+                <td>Soberania, cidadania, dignidade da pessoa humana, valores sociais do trabalho e da livre iniciativa, pluralismo político.</td>
+              </tr>
+              <tr>
+                <td>Objetivos fundamentais</td>
+                <td>Art. 3º</td>
+                <td>Construir sociedade livre, justa e solidária; garantir desenvolvimento; erradicar pobreza e reduzir desigualdades; promover bem de todos.</td>
+              </tr>
+              <tr>
+                <td>Relações internacionais</td>
+                <td>Art. 4º</td>
+                <td>Independência nacional, direitos humanos, autodeterminação, não intervenção, igualdade entre Estados, paz, solução pacífica, repúdio ao terrorismo e racismo, cooperação e asilo político.</td>
+              </tr>
+              <tr>
+                <td>Idioma e símbolos</td>
+                <td>Art. 13</td>
+                <td>Língua portuguesa; bandeira, hino, armas e selo nacionais. Estados, DF e Municípios podem ter símbolos próprios.</td>
+              </tr>
+              <tr>
+                <td>Vedações aos entes</td>
+                <td>Art. 19</td>
+                <td>Não estabelecer cultos ou igrejas; não recusar fé a documentos públicos; não criar distinções entre brasileiros ou preferências entre si.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="grid two">
+          <div class="card">
+            <span class="tag orange">Fundamento x objetivo</span>
+            <p><strong>Fundamentos</strong> são elementos estruturantes do Estado. <strong>Objetivos</strong> são fins constitucionais a serem perseguidos.</p>
+          </div>
+          <div class="card">
+            <span class="tag orange">Estado laico</span>
+            <p>O Brasil não adota religião oficial, mas a separação é atenuada por pontos de contato constitucionais, como ensino religioso facultativo, casamento religioso com efeitos civis e assistência religiosa.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="entes">
+        <h2>4. Entes Federativos</h2>
+        <p class="section-lead">A prova costuma explorar as capacidades de autonomia, a formação de Estados e Municípios, a posição peculiar do Distrito Federal e a natureza dos Territórios.</p>
+
+        <h3>União Federal</h3>
+        <div class="grid two">
+          <div class="card">
+            <p>A União é ente federativo autônomo e integra a República Federativa do Brasil. Não se confunde com o Estado brasileiro no plano internacional.</p>
+          </div>
+          <div class="card">
+            <p>A República Federativa do Brasil é pessoa jurídica de direito público externo e possui soberania. A União é pessoa jurídica de direito público interno.</p>
+          </div>
+        </div>
+
+        <h3>Estados-Membros</h3>
+        <div class="table-wrap" role="region" aria-label="Estados membros">
+          <table>
+            <thead>
+              <tr>
+                <th>Capacidade</th>
+                <th>Como aparece</th>
+                <th>Base constitucional</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Auto-organização</td>
+                <td>Constituição estadual, observada a CF.</td>
+                <td>Art. 25</td>
+              </tr>
+              <tr>
+                <td>Autogoverno</td>
+                <td>Governador, Assembleia Legislativa, Judiciário estadual.</td>
+                <td>Arts. 27, 28 e 125</td>
+              </tr>
+              <tr>
+                <td>Autoadministração e autolegislação</td>
+                <td>Exercício de competências materiais e legislativas próprias.</td>
+                <td>Arts. 18 e 25 a 28</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="note">
+          <strong>Criação de Estado:</strong> exige plebiscito da população diretamente interessada, audiência das Assembleias Legislativas, aprovação por lei complementar no Congresso Nacional e sanção presidencial. A vontade negativa no plebiscito impede o processo; a vontade positiva não obriga Congresso nem Presidente.
+        </div>
+
+        <div class="grid three">
+          <div class="card">
+            <span class="tag">Fusão</span>
+            <p>Dois ou mais Estados se unem e formam um novo ente. Os anteriores desaparecem.</p>
+          </div>
+          <div class="card">
+            <span class="tag">Cisão</span>
+            <p>Um Estado se subdivide em dois ou mais novos entes. O Estado originário desaparece.</p>
+          </div>
+          <div class="card">
+            <span class="tag">Desmembramento</span>
+            <p>Parte do território se separa para formar novo Estado ou anexar-se a outro. O Estado originário permanece.</p>
+          </div>
+        </div>
+
+        <h3>Municípios</h3>
+        <div class="grid two">
+          <div class="card">
+            <p>São entes federativos autônomos, com Lei Orgânica, eleição de Prefeito, Vice-Prefeito e Vereadores, competências administrativas e legislativas próprias.</p>
+          </div>
+          <div class="card">
+            <p>A Lei Orgânica é votada em dois turnos, com interstício mínimo de dez dias, e aprovada por dois terços da Câmara Municipal.</p>
+          </div>
+        </div>
+
+        <div class="warning note">
+          <strong>Formação de Municípios:</strong> depende de lei complementar federal definindo o período, estudo de viabilidade municipal, plebiscito das populações dos Municípios envolvidos e lei estadual. Sem LC federal, nova criação é inconstitucional.
+        </div>
+
+        <h3>Distrito Federal</h3>
+        <div class="grid two">
+          <div class="card">
+            <p>É ente federativo autônomo, regido por Lei Orgânica, com Governador, Vice-Governador e Deputados Distritais.</p>
+          </div>
+          <div class="card">
+            <p>Não pode ser dividido em Municípios. Acumula competências legislativas reservadas aos Estados e aos Municípios.</p>
+          </div>
+          <div class="card">
+            <p>Sua autonomia é parcialmente tutelada pela União: Judiciário, Ministério Público, polícias civil, penal, militar e bombeiros militares são organizados e mantidos pela União.</p>
+          </div>
+          <div class="card">
+            <p>Recursos do Fundo Constitucional do DF são federais; por isso, a fiscalização compete ao TCU.</p>
+          </div>
+        </div>
+
+        <h3>Territórios Federais</h3>
+        <div class="card">
+          <p>Integram a União e não possuem autonomia política. São descentralizações administrativo-territoriais da União, com natureza de autarquia territorial. Atualmente, não há Territórios Federais no Brasil, mas a CF permite sua criação por lei complementar.</p>
+        </div>
+      </section>
+
+      <section id="competencias">
+        <h2>5. Repartição de Competências</h2>
+        <p class="section-lead">A repartição de competências é o mecanismo jurídico que mantém a autonomia federativa. O vício por invasão de competência é formal orgânico, de natureza constitucional.</p>
+
+        <div class="table-wrap" role="region" aria-label="Competências por ente">
+          <table>
+            <thead>
+              <tr>
+                <th>Ente</th>
+                <th>Competência material</th>
+                <th>Competência legislativa</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>União</td>
+                <td>Exclusiva: art. 21. Comum: art. 23.</td>
+                <td>Privativa: art. 22. Concorrente: art. 24. Tributária: arts. 153 e 154.</td>
+              </tr>
+              <tr>
+                <td>Estados</td>
+                <td>Comum: art. 23. Residual: art. 25, § 1º.</td>
+                <td>Expressa, residual, delegada por LC federal, concorrente e suplementar.</td>
+              </tr>
+              <tr>
+                <td>Municípios</td>
+                <td>Comum: art. 23. Enumerada: art. 30, III a IX.</td>
+                <td>Lei Orgânica, interesse local, suplementar, plano diretor e tributos municipais.</td>
+              </tr>
+              <tr>
+                <td>Distrito Federal</td>
+                <td>Comum: art. 23.</td>
+                <td>Competências estaduais e municipais, observadas as peculiaridades constitucionais.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="grid two">
+          <div class="card">
+            <span class="tag">Competência exclusiva</span>
+            <p>É material e indelegável, típica da União no art. 21.</p>
+          </div>
+          <div class="card">
+            <span class="tag">Competência privativa</span>
+            <p>É legislativa. A União pode autorizar Estados e DF a legislarem sobre questões específicas por lei complementar.</p>
+          </div>
+          <div class="card">
+            <span class="tag">Competência comum</span>
+            <p>É material, atribuída a todos os entes no art. 23. Leis complementares devem organizar cooperação.</p>
+          </div>
+          <div class="card">
+            <span class="tag">Competência concorrente</span>
+            <p>É legislativa, prevista no art. 24 para União, Estados e DF. União edita normas gerais; Estados e DF complementam.</p>
+          </div>
+        </div>
+
+        <h3>Modelo vertical da competência concorrente</h3>
+        <ol>
+          <li>A União edita normas gerais.</li>
+          <li>Estados e DF editam normas específicas.</li>
+          <li>Se a União se omite, Estados e DF exercem competência legislativa plena.</li>
+          <li>Se depois vier norma geral federal, ela suspende a eficácia da norma estadual/distrital contrária. Não revoga.</li>
+        </ol>
+
+        <div class="note">
+          <strong>Municípios e meio ambiente:</strong> embora o art. 24 não inclua Municípios na competência concorrente, o STF admite legislação municipal ambiental quando houver interesse local e harmonia com as normas federal e estadual.
+        </div>
+
+        <h3>Modelos doutrinários</h3>
+        <div class="grid two">
+          <div class="card">
+            <strong>Clássico x moderno</strong>
+            <p>O clássico enumera poderes da União e deixa resíduo aos Estados. O moderno também prevê competências comuns e concorrentes.</p>
+          </div>
+          <div class="card">
+            <strong>Horizontal x vertical</strong>
+            <p>No horizontal, cada ente atua em seu campo. No vertical, há condomínio normativo, como nas competências concorrentes.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="stf">
+        <h2>6. Precedentes e Temas Atuais do STF</h2>
+        <p class="section-lead">Este bloco ajuda a resolver questões de prova que cobram competência federativa com casos concretos.</p>
+
+        <div class="table-wrap" role="region" aria-label="Precedentes do STF">
+          <table>
+            <thead>
+              <tr>
+                <th>Tema</th>
+                <th>Entendimento essencial</th>
+                <th>Chave de prova</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Linguagem neutra em escolas</td>
+                <td>Leis estaduais, distritais ou municipais que disciplinam a matéria invadem competência da União sobre diretrizes e bases da educação.</td>
+                <td>Art. 22, XXIV; vício formal orgânico.</td>
+              </tr>
+              <tr>
+                <td>Queima da palha da cana</td>
+                <td>Município pode legislar sobre meio ambiente no interesse local, desde que em harmonia com as normas gerais.</td>
+                <td>RE 586.224.</td>
+              </tr>
+              <tr>
+                <td>Fumaça de veículos</td>
+                <td>Município pode aplicar regras locais de controle de poluição urbana, respeitadas normas federal e estadual.</td>
+                <td>RE 194.704.</td>
+              </tr>
+              <tr>
+                <td>Amianto</td>
+                <td>STF admitiu leis estaduais e municipais mais protetivas, com fortalecimento do federalismo cooperativo e da proteção à saúde e ao meio ambiente.</td>
+                <td>ADIs 3.406, 3.470, 3.937 e correlatas.</td>
+              </tr>
+              <tr>
+                <td>Tabaco</td>
+                <td>Leis estaduais restritivas podem concretizar proteção à saúde e consumo, dentro da competência concorrente.</td>
+                <td>Federalismo como instrumento de realização de direitos fundamentais.</td>
+              </tr>
+              <tr>
+                <td>Covid-19</td>
+                <td>União coordena, mas não pode afastar unilateralmente medidas sanitárias estaduais, distritais e municipais no âmbito de suas competências.</td>
+                <td>ADI 6.341 e ADPF 672.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="warning note">
+          <strong>Não há hierarquia entre leis federal, estadual e municipal quando cada uma atua em seu campo de competência.</strong> O problema surge quando um ente legisla fora de sua atribuição constitucional.
+        </div>
+      </section>
+
+      <section id="intervencao">
+        <h2>7. Intervenção</h2>
+        <p class="section-lead">Intervenção é medida excepcional que suprime temporariamente a autonomia do ente. Como regra de anormalidade, deve ser interpretada restritivamente.</p>
+
+        <div class="grid two">
+          <div class="card">
+            <span class="tag">Intervenção federal</span>
+            <p>A União intervém nos Estados, no DF e nos Municípios localizados em Território Federal.</p>
+          </div>
+          <div class="card">
+            <span class="tag">Intervenção estadual</span>
+            <p>O Estado intervém em seus Municípios, nas hipóteses taxativas do art. 35.</p>
+          </div>
+        </div>
+
+        <h3>Hipóteses de intervenção federal nos Estados e no DF</h3>
+        <ul>
+          <li>Manter a integridade nacional.</li>
+          <li>Repelir invasão estrangeira ou de uma unidade da Federação em outra.</li>
+          <li>Pôr termo a grave comprometimento da ordem pública.</li>
+          <li>Garantir livre exercício de qualquer dos Poderes nas unidades da Federação.</li>
+          <li>Reorganizar finanças em hipóteses constitucionais.</li>
+          <li>Prover execução de lei federal, ordem ou decisão judicial.</li>
+          <li>Assegurar observância dos princípios constitucionais sensíveis.</li>
+        </ul>
+
+        <div class="table-wrap" role="region" aria-label="Espécies de intervenção federal">
+          <table>
+            <thead>
+              <tr>
+                <th>Espécie</th>
+                <th>Quando ocorre</th>
+                <th>Ponto de prova</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Espontânea</td>
+                <td>Presidente age de ofício.</td>
+                <td>Art. 34, I, II, III e V.</td>
+              </tr>
+              <tr>
+                <td>Provocada por solicitação</td>
+                <td>Coação contra Legislativo ou Executivo local.</td>
+                <td>Presidente tem discricionariedade.</td>
+              </tr>
+              <tr>
+                <td>Provocada por requisição</td>
+                <td>Coação contra Judiciário ou descumprimento de decisão judicial.</td>
+                <td>Presidente fica vinculado à requisição judicial.</td>
+              </tr>
+              <tr>
+                <td>Representação interventiva</td>
+                <td>Princípios sensíveis ou execução de lei federal.</td>
+                <td>Depende de provimento pelo STF de representação do PGR.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Procedimento da intervenção federal</h3>
+        <ol>
+          <li>Decreto do Presidente da República, com amplitude, prazo e condições de execução.</li>
+          <li>Nomeação de interventor, se couber.</li>
+          <li>Oitiva dos Conselhos da República e de Defesa Nacional, em regra prévia; em urgência extrema, admite-se posterior.</li>
+          <li>Controle político pelo Congresso Nacional em 24 horas, salvo hipóteses do art. 36, § 3º.</li>
+          <li>Cessados os motivos, autoridades afastadas retornam, salvo impedimento legal.</li>
+        </ol>
+
+        <div class="grid three">
+          <div class="card">
+            <span class="tag orange">RJ 2018</span>
+            <p>Intervenção parcial na segurança pública, para pôr termo a grave comprometimento da ordem pública.</p>
+          </div>
+          <div class="card">
+            <span class="tag orange">Roraima 2018</span>
+            <p>Intervenção total no Executivo estadual, com afastamento da Governadora.</p>
+          </div>
+          <div class="card">
+            <span class="tag orange">DF 2023</span>
+            <p>Intervenção parcial na segurança pública após os atos de 8 de janeiro de 2023.</p>
+          </div>
+        </div>
+
+        <div class="warning note">
+          <strong>Direitos fundamentais:</strong> a intervenção federal não autoriza, por si só, restrições a direitos fundamentais. Diferentemente do estado de defesa e do estado de sítio, a CF não prevê medidas coercitivas próprias para a intervenção.
+        </div>
+      </section>
+
+      <section id="flashcards">
+        <h2>Flashcards</h2>
+        <p class="section-lead">Clique ou toque em cada cartão para revelar a resposta.</p>
+        <div class="flash-grid" id="flashGrid">
+          <div class="flashcard" tabindex="0"><div class="flash-inner"><div class="front"><strong>Quais são os elementos do Estado?</strong><span class="hint">Toque para ver</span></div><div class="back"><strong>Soberania, finalidade, povo e território.</strong><span class="hint">Conceito-base</span></div></div></div>
+          <div class="flashcard" tabindex="0"><div class="flash-inner"><div class="front"><strong>Qual é a forma de Estado adotada pelo Brasil?</strong><span class="hint">Toque para ver</span></div><div class="back"><strong>Federação.</strong><span class="hint">Art. 1º e art. 18</span></div></div></div>
+          <div class="flashcard" tabindex="0"><div class="flash-inner"><div class="front"><strong>Quem é soberano: União ou República Federativa do Brasil?</strong><span class="hint">Toque para ver</span></div><div class="back"><strong>A República Federativa do Brasil.</strong> A União é ente autônomo, não soberano.<span class="hint">Pegadinha clássica</span></div></div></div>
+          <div class="flashcard" tabindex="0"><div class="flash-inner"><div class="front"><strong>O que caracteriza a Federação?</strong><span class="hint">Toque para ver</span></div><div class="back"><strong>Autonomia dos entes, repartição de competências, Constituição rígida e indissolubilidade.</strong><span class="hint">Núcleo federativo</span></div></div></div>
+          <div class="flashcard" tabindex="0"><div class="flash-inner"><div class="front"><strong>Federação por agregação significa o quê?</strong><span class="hint">Toque para ver</span></div><div class="back"><strong>Estados soberanos se unem e cedem soberania para formar Estado federal.</strong><span class="hint">Ex.: EUA</span></div></div></div>
+          <div class="flashcard" tabindex="0"><div class="flash-inner"><div class="front"><strong>Federação brasileira é por agregação ou desagregação?</strong><span class="hint">Toque para ver</span></div><div class="back"><strong>Por desagregação.</strong> Um Estado unitário se descentralizou.<span class="hint">Brasil republicano</span></div></div></div>
+          <div class="flashcard" tabindex="0"><div class="flash-inner"><div class="front"><strong>Quais são os entes federativos brasileiros?</strong><span class="hint">Toque para ver</span></div><div class="back"><strong>União, Estados, Distrito Federal e Municípios.</strong><span class="hint">Art. 18</span></div></div></div>
+          <div class="flashcard" tabindex="0"><div class="flash-inner"><div class="front"><strong>Município é ente federativo?</strong><span class="hint">Toque para ver</span></div><div class="back"><strong>Sim.</strong> Tem autonomia própria nos termos da CF/88.<span class="hint">Art. 1º, 18 e 29</span></div></div></div>
+          <div class="flashcard" tabindex="0"><div class="flash-inner"><div class="front"><strong>O DF pode ser dividido em Municípios?</strong><span class="hint">Toque para ver</span></div><div class="back"><strong>Não.</strong> O art. 32 veda expressamente.<span class="hint">Distrito Federal</span></div></div></div>
+          <div class="flashcard" tabindex="0"><div class="flash-inner"><div class="front"><strong>Território Federal é ente federativo?</strong><span class="hint">Toque para ver</span></div><div class="back"><strong>Não.</strong> Integra a União e não possui autonomia política.<span class="hint">Art. 18, § 2º</span></div></div></div>
+          <div class="flashcard" tabindex="0"><div class="flash-inner"><div class="front"><strong>Competência exclusiva é legislativa?</strong><span class="hint">Toque para ver</span></div><div class="back"><strong>Não.</strong> É material/administrativa e indelegável.<span class="hint">Art. 21</span></div></div></div>
+          <div class="flashcard" tabindex="0"><div class="flash-inner"><div class="front"><strong>Competência privativa da União pode ser delegada?</strong><span class="hint">Toque para ver</span></div><div class="back"><strong>Sim, por lei complementar, para questões específicas, aos Estados e ao DF.</strong><span class="hint">Art. 22, parágrafo único</span></div></div></div>
+          <div class="flashcard" tabindex="0"><div class="flash-inner"><div class="front"><strong>Na competência concorrente, o que cabe à União?</strong><span class="hint">Toque para ver</span></div><div class="back"><strong>Editar normas gerais.</strong><span class="hint">Art. 24, § 1º</span></div></div></div>
+          <div class="flashcard" tabindex="0"><div class="flash-inner"><div class="front"><strong>Se a União se omite em norma geral, o que ocorre?</strong><span class="hint">Toque para ver</span></div><div class="back"><strong>Estados e DF exercem competência legislativa plena, para atender suas peculiaridades.</strong><span class="hint">Art. 24, § 3º</span></div></div></div>
+          <div class="flashcard" tabindex="0"><div class="flash-inner"><div class="front"><strong>Lei federal superveniente revoga lei estadual concorrente?</strong><span class="hint">Toque para ver</span></div><div class="back"><strong>Não. Suspende a eficácia no que for contrário.</strong><span class="hint">Art. 24, § 4º</span></div></div></div>
+          <div class="flashcard" tabindex="0"><div class="flash-inner"><div class="front"><strong>Qual órgão representa os Estados no plano federal?</strong><span class="hint">Toque para ver</span></div><div class="back"><strong>Senado Federal.</strong><span class="hint">Art. 46</span></div></div></div>
+          <div class="flashcard" tabindex="0"><div class="flash-inner"><div class="front"><strong>Forma federativa pode ser abolida por emenda?</strong><span class="hint">Toque para ver</span></div><div class="back"><strong>Não.</strong> É cláusula pétrea.<span class="hint">Art. 60, § 4º, I</span></div></div></div>
+          <div class="flashcard" tabindex="0"><div class="flash-inner"><div class="front"><strong>Quem decreta intervenção federal?</strong><span class="hint">Toque para ver</span></div><div class="back"><strong>Presidente da República.</strong><span class="hint">Art. 84, X</span></div></div></div>
+          <div class="flashcard" tabindex="0"><div class="flash-inner"><div class="front"><strong>Controle político da intervenção federal cabe a quem?</strong><span class="hint">Toque para ver</span></div><div class="back"><strong>Congresso Nacional, em regra, em 24 horas.</strong><span class="hint">Art. 36</span></div></div></div>
+          <div class="flashcard" tabindex="0"><div class="flash-inner"><div class="front"><strong>Intervenção autoriza restrição automática de direitos fundamentais?</strong><span class="hint">Toque para ver</span></div><div class="back"><strong>Não.</strong> A interpretação deve ser restritiva.<span class="hint">Atenção</span></div></div></div>
+          <div class="flashcard" tabindex="0"><div class="flash-inner"><div class="front"><strong>População interessada no desmembramento de Estado é só a área desmembrada?</strong><span class="hint">Toque para ver</span></div><div class="back"><strong>Não.</strong> Abrange toda a população do Estado-Membro afetado.<span class="hint">ADI 2.650</span></div></div></div>
+          <div class="flashcard" tabindex="0"><div class="flash-inner"><div class="front"><strong>O plebiscito favorável obriga a criação de Estado?</strong><span class="hint">Toque para ver</span></div><div class="back"><strong>Não.</strong> Congresso e Presidente ainda avaliam politicamente.<span class="hint">Processo complexo</span></div></div></div>
+          <div class="flashcard" tabindex="0"><div class="flash-inner"><div class="front"><strong>Município pode legislar sobre meio ambiente?</strong><span class="hint">Toque para ver</span></div><div class="back"><strong>Sim, no interesse local e em harmonia com normas federal e estadual.</strong><span class="hint">RE 586.224</span></div></div></div>
+          <div class="flashcard" tabindex="0"><div class="flash-inner"><div class="front"><strong>Qual é o vício quando ente legisla fora de sua competência?</strong><span class="hint">Toque para ver</span></div><div class="back"><strong>Vício formal orgânico.</strong><span class="hint">Competência federativa</span></div></div></div>
+        </div>
+      </section>
+
+      <section id="questoes">
+        <h2>Questões para Fixação</h2>
+        <p class="section-lead">Responda e veja a correção imediatamente. No fim, use o botão para refazer.</p>
+        <div class="scorebar">
+          <strong id="score">Acertos: 0/15</strong>
+          <button type="button" id="resetQuiz">Refazer questões</button>
+        </div>
+
+        <div class="quiz" id="quiz">
+          <div class="question" data-answer="b">
+            <p>1. A soberania, no federalismo brasileiro, pertence:</p>
+            <div class="options">
+              <button class="option" data-option="a">à União Federal, por representar o poder central.</button>
+              <button class="option" data-option="b">à República Federativa do Brasil.</button>
+              <button class="option" data-option="c">a cada Estado-Membro, nos limites de sua Constituição.</button>
+              <button class="option" data-option="d">aos Municípios, em matéria de interesse local.</button>
+            </div>
+            <div class="feedback">Resposta: B. Os entes são autônomos; soberano é o Estado federal brasileiro no plano internacional.</div>
+          </div>
+
+          <div class="question" data-answer="c">
+            <p>2. O Brasil adotou, respectivamente:</p>
+            <div class="options">
+              <button class="option" data-option="a">Monarquia, parlamentarismo e Estado unitário.</button>
+              <button class="option" data-option="b">República, parlamentarismo e Confederação.</button>
+              <button class="option" data-option="c">República, presidencialismo e Federação.</button>
+              <button class="option" data-option="d">República, presidencialismo e Estado regional.</button>
+            </div>
+            <div class="feedback">Resposta: C. Essa é uma tríade básica de prova.</div>
+          </div>
+
+          <div class="question" data-answer="a">
+            <p>3. A Federação brasileira é classificada historicamente como:</p>
+            <div class="options">
+              <button class="option" data-option="a">por desagregação, pois surgiu da descentralização de Estado unitário.</button>
+              <button class="option" data-option="b">por agregação, pois Estados soberanos se uniram.</button>
+              <button class="option" data-option="c">confederativa, pois admite secessão.</button>
+              <button class="option" data-option="d">regional, pois há apenas descentralização administrativa.</button>
+            </div>
+            <div class="feedback">Resposta: A. O Brasil não nasceu de Estados soberanos independentes se unindo.</div>
+          </div>
+
+          <div class="question" data-answer="d">
+            <p>4. São entes federativos na CF/88:</p>
+            <div class="options">
+              <button class="option" data-option="a">União, Estados e Territórios.</button>
+              <button class="option" data-option="b">Estados, Municípios e regiões metropolitanas.</button>
+              <button class="option" data-option="c">União, Estados, Distrito Federal, Municípios e Territórios.</button>
+              <button class="option" data-option="d">União, Estados, Distrito Federal e Municípios.</button>
+            </div>
+            <div class="feedback">Resposta: D. Territórios integram a União e não têm autonomia política.</div>
+          </div>
+
+          <div class="question" data-answer="b">
+            <p>5. A forma federativa de Estado:</p>
+            <div class="options">
+              <button class="option" data-option="a">pode ser abolida por emenda constitucional aprovada em dois turnos.</button>
+              <button class="option" data-option="b">é cláusula pétrea.</button>
+              <button class="option" data-option="c">permite direito de secessão em casos excepcionais.</button>
+              <button class="option" data-option="d">impede qualquer intervenção federal.</button>
+            </div>
+            <div class="feedback">Resposta: B. Art. 60, § 4º, I. A tentativa de secessão pode justificar intervenção.</div>
+          </div>
+
+          <div class="question" data-answer="c">
+            <p>6. A competência comum do art. 23 é:</p>
+            <div class="options">
+              <button class="option" data-option="a">legislativa e privativa da União.</button>
+              <button class="option" data-option="b">legislativa e concorrente apenas entre União e Estados.</button>
+              <button class="option" data-option="c">material/administrativa, atribuída a todos os entes.</button>
+              <button class="option" data-option="d">tributária e residual dos Estados.</button>
+            </div>
+            <div class="feedback">Resposta: C. Também é chamada cumulativa, administrativa ou paralela.</div>
+          </div>
+
+          <div class="question" data-answer="a">
+            <p>7. Na competência legislativa concorrente, a superveniência de lei federal sobre normas gerais:</p>
+            <div class="options">
+              <button class="option" data-option="a">suspende a eficácia da lei estadual no que lhe for contrário.</button>
+              <button class="option" data-option="b">revoga integralmente a lei estadual.</button>
+              <button class="option" data-option="c">torna automaticamente inconstitucional toda lei estadual anterior.</button>
+              <button class="option" data-option="d">não produz efeito sobre normas estaduais.</button>
+            </div>
+            <div class="feedback">Resposta: A. É suspensão de eficácia, não revogação.</div>
+          </div>
+
+          <div class="question" data-answer="d">
+            <p>8. A União pode autorizar Estados e DF a legislarem sobre questões específicas de sua competência privativa por meio de:</p>
+            <div class="options">
+              <button class="option" data-option="a">lei ordinária.</button>
+              <button class="option" data-option="b">decreto presidencial.</button>
+              <button class="option" data-option="c">resolução do Senado.</button>
+              <button class="option" data-option="d">lei complementar.</button>
+            </div>
+            <div class="feedback">Resposta: D. Art. 22, parágrafo único.</div>
+          </div>
+
+          <div class="question" data-answer="b">
+            <p>9. Sobre a criação de Municípios após a EC 15/96, é correto afirmar:</p>
+            <div class="options">
+              <button class="option" data-option="a">depende apenas de lei estadual e plebiscito.</button>
+              <button class="option" data-option="b">depende de lei complementar federal, estudo de viabilidade, plebiscito e lei estadual.</button>
+              <button class="option" data-option="c">pode ser feita por emenda à Constituição estadual.</button>
+              <button class="option" data-option="d">não depende de consulta popular.</button>
+            </div>
+            <div class="feedback">Resposta: B. Sem lei complementar federal, a criação posterior é inconstitucional.</div>
+          </div>
+
+          <div class="question" data-answer="c">
+            <p>10. O Distrito Federal:</p>
+            <div class="options">
+              <button class="option" data-option="a">pode criar Municípios por lei distrital.</button>
+              <button class="option" data-option="b">possui apenas competências municipais.</button>
+              <button class="option" data-option="c">acumula competências legislativas estaduais e municipais.</button>
+              <button class="option" data-option="d">não é ente federativo.</button>
+            </div>
+            <div class="feedback">Resposta: C. Art. 32, § 1º, com vedação de divisão em Municípios.</div>
+          </div>
+
+          <div class="question" data-answer="a">
+            <p>11. O STF admite legislação municipal ambiental quando:</p>
+            <div class="options">
+              <button class="option" data-option="a">houver interesse local e harmonia com normas federal e estadual.</button>
+              <button class="option" data-option="b">o Município quiser substituir integralmente a legislação federal.</button>
+              <button class="option" data-option="c">não existir qualquer interesse estadual ou nacional.</button>
+              <button class="option" data-option="d">a Câmara Municipal aprovar por dois terços.</button>
+            </div>
+            <div class="feedback">Resposta: A. Essa é a lógica de RE 586.224 e RE 194.704.</div>
+          </div>
+
+          <div class="question" data-answer="d">
+            <p>12. A intervenção federal é medida:</p>
+            <div class="options">
+              <button class="option" data-option="a">ordinária, sempre cabível por conveniência política.</button>
+              <button class="option" data-option="b">que extingue definitivamente a autonomia do ente.</button>
+              <button class="option" data-option="c">que autoriza automaticamente restrição a direitos fundamentais.</button>
+              <button class="option" data-option="d">excepcional, temporária e de interpretação restritiva.</button>
+            </div>
+            <div class="feedback">Resposta: D. O rol constitucional é taxativo.</div>
+          </div>
+
+          <div class="question" data-answer="b">
+            <p>13. A intervenção federal espontânea ocorre, por exemplo, para:</p>
+            <div class="options">
+              <button class="option" data-option="a">prover execução de ordem judicial, sempre por solicitação do Legislativo.</button>
+              <button class="option" data-option="b">pôr termo a grave comprometimento da ordem pública.</button>
+              <button class="option" data-option="c">assegurar princípios sensíveis, sem participação do STF.</button>
+              <button class="option" data-option="d">resolver qualquer conflito político entre Prefeito e Câmara.</button>
+            </div>
+            <div class="feedback">Resposta: B. É uma das hipóteses em que o Presidente pode agir de ofício.</div>
+          </div>
+
+          <div class="question" data-answer="a">
+            <p>14. A intervenção estadual em Município:</p>
+            <div class="options">
+              <button class="option" data-option="a">tem hipóteses taxativas no art. 35 da CF.</button>
+              <button class="option" data-option="b">pode ser ampliada livremente pela Constituição estadual.</button>
+              <button class="option" data-option="c">é decretada pelo Presidente da República.</button>
+              <button class="option" data-option="d">não se submete a controle legislativo.</button>
+            </div>
+            <div class="feedback">Resposta: A. O STF não admite ampliação ou redução estadual das hipóteses.</div>
+          </div>
+
+          <div class="question" data-answer="c">
+            <p>15. Quando uma lei municipal invade competência privativa da União, o vício é:</p>
+            <div class="options">
+              <button class="option" data-option="a">material por hierarquia entre leis.</button>
+              <button class="option" data-option="b">político, sem controle judicial.</button>
+              <button class="option" data-option="c">formal orgânico, por violação de competência federativa.</button>
+              <button class="option" data-option="d">sanável por decreto do Prefeito.</button>
+            </div>
+            <div class="feedback">Resposta: C. Não é caso de hierarquia simples entre lei federal e lei municipal.</div>
+          </div>
+        </div>
+      </section>
+
+      <p class="footer">Relatório de estudo transformativo baseado no texto indicado pelo usuário, para revisão acadêmica e preparação de prova.</p>
+    </main>
+  </div>
+
+  <script>
+    const cards = Array.from(document.querySelectorAll('.flashcard'));
+    cards.forEach((card) => {
+      const toggle = () => card.classList.toggle('is-flipped');
+      card.addEventListener('click', toggle);
+      card.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          toggle();
+        }
+      });
+    });
+
+    const expandCards = document.getElementById('expandCards');
+    let allOpen = false;
+    expandCards.addEventListener('click', () => {
+      allOpen = !allOpen;
+      cards.forEach((card) => card.classList.toggle('is-flipped', allOpen));
+      expandCards.textContent = allOpen ? 'Ocultar respostas' : 'Ver respostas';
+    });
+
+    const jump = document.getElementById('jump');
+    jump.addEventListener('change', () => {
+      document.querySelector(jump.value).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    const questions = Array.from(document.querySelectorAll('.question'));
+    const score = document.getElementById('score');
+
+    function updateScore() {
+      const correct = questions.filter((question) => question.dataset.done === 'true' && question.dataset.correct === 'true').length;
+      score.textContent = `Acertos: ${correct}/${questions.length}`;
+    }
+
+    questions.forEach((question) => {
+      const options = Array.from(question.querySelectorAll('.option'));
+      const feedback = question.querySelector('.feedback');
+      options.forEach((option) => {
+        option.addEventListener('click', () => {
+          if (question.dataset.done === 'true') return;
+          const isCorrect = option.dataset.option === question.dataset.answer;
+          question.dataset.done = 'true';
+          question.dataset.correct = String(isCorrect);
+          options.forEach((candidate) => {
+            candidate.disabled = true;
+            if (candidate.dataset.option === question.dataset.answer) candidate.classList.add('correct');
+          });
+          if (!isCorrect) option.classList.add('wrong');
+          feedback.classList.add('show');
+          updateScore();
+        });
+      });
+    });
+
+    document.getElementById('resetQuiz').addEventListener('click', () => {
+      questions.forEach((question) => {
+        question.dataset.done = 'false';
+        question.dataset.correct = 'false';
+        question.querySelector('.feedback').classList.remove('show');
+        question.querySelectorAll('.option').forEach((option) => {
+          option.disabled = false;
+          option.classList.remove('correct', 'wrong');
+        });
+      });
+      updateScore();
+      document.getElementById('questoes').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    updateScore();
+  </script>
+</body>
+</html>
