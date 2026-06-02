@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Direito Constitucional — Tripartição dos Poderes | Pedro Lenza</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  /* ===== TOKENS ===== */
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --surface2: #1c2230;
+    --border: #2a3345;
+    --accent-leg: #3b82f6;
+    --accent-exe: #10b981;
+    --accent-jud: #f59e0b;
+    --accent-proc: #8b5cf6;
+    --text: #e6edf3;
+    --text-muted: #7d8590;
+    --text-dim: #adbac7;
+    --gold: #f5c518;
+    --red: #ef4444;
+    --green: #22c55e;
+    --card-radius: 14px;
+    --gap: 24px;
+    --font-title: 'DM Serif Display', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+  }
+
+  /* ===== RESET ===== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+  a { color: var(--accent-leg); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  img { max-width: 100%; }
+
+  /* ===== HEADER ===== */
+  header {
+    background: linear-gradient(135deg, #0d1117 0%, #1a2035 50%, #0d1117 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 60px 24px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(59,130,246,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header-tag {
+    display: inline-block;
+    background: rgba(59,130,246,0.15);
+    border: 1px solid rgba(59,130,246,0.3);
+    color: var(--accent-leg);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+  }
+  header h1 {
+    font-family: var(--font-title);
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #e6edf3 30%, #7d8590);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  header p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .header-badges {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 28px;
+  }
+  .badge {
+    display: flex; align-items: center; gap: 8px;
+    padding: 8px 18px;
+    border-radius: 100px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    border: 1px solid;
+  }
+  .badge-leg { background: rgba(59,130,246,0.1); border-color: rgba(59,130,246,0.3); color: var(--accent-leg); }
+  .badge-exe { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.3); color: var(--accent-exe); }
+  .badge-jud { background: rgba(245,158,11,0.1); border-color: rgba(245,158,11,0.3); color: var(--accent-jud); }
+  .badge-proc { background: rgba(139,92,246,0.1); border-color: rgba(139,92,246,0.3); color: var(--accent-proc); }
+
+  /* ===== NAV ===== */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(13,17,23,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; gap: 0; overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+  .nav-inner a {
+    padding: 14px 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+  }
+  .nav-inner a:hover { color: var(--text); text-decoration: none; }
+  .nav-inner a.active { color: var(--text); border-bottom-color: var(--accent-leg); }
+
+  /* ===== MAIN LAYOUT ===== */
+  main { max-width: 1100px; margin: 0 auto; padding: 40px 24px 80px; }
+  section { margin-bottom: 64px; }
+  .section-header {
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 28px; padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+  .icon-leg { background: rgba(59,130,246,0.15); }
+  .icon-exe { background: rgba(16,185,129,0.15); }
+  .icon-jud { background: rgba(245,158,11,0.15); }
+  .icon-proc { background: rgba(139,92,246,0.15); }
+  .icon-card { background: rgba(245,197,24,0.15); }
+  .icon-quiz { background: rgba(239,68,68,0.15); }
+  .section-title {
+    font-family: var(--font-title);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  .section-subtitle {
+    color: var(--text-muted); font-size: 0.85rem; margin-top: 2px;
+  }
+
+  /* ===== CARDS GRID ===== */
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--gap); }
+  .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--gap); }
+
+  /* ===== CONTENT CARD ===== */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--card-radius);
+    padding: 24px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .card:hover { border-color: var(--border); transform: translateY(-2px); }
+  .card-title {
+    font-weight: 600; font-size: 0.95rem;
+    margin-bottom: 12px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .card-dot {
+    width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  }
+  .dot-leg { background: var(--accent-leg); }
+  .dot-exe { background: var(--accent-exe); }
+  .dot-jud { background: var(--accent-jud); }
+  .dot-proc { background: var(--accent-proc); }
+  .card p, .card li { font-size: 0.9rem; color: var(--text-dim); }
+  .card ul { padding-left: 16px; list-style: disc; }
+  .card ul li { margin-bottom: 6px; }
+  .card.leg-card { border-color: rgba(59,130,246,0.25); }
+  .card.exe-card { border-color: rgba(16,185,129,0.25); }
+  .card.jud-card { border-color: rgba(245,158,11,0.25); }
+  .card.proc-card { border-color: rgba(139,92,246,0.25); }
+  .card.highlight { border-color: rgba(245,197,24,0.3); background: rgba(245,197,24,0.04); }
+
+  /* ===== INFO BOX ===== */
+  .infobox {
+    border-left: 3px solid;
+    padding: 14px 18px;
+    border-radius: 0 8px 8px 0;
+    margin: 16px 0;
+    font-size: 0.88rem;
+  }
+  .infobox p { margin: 0; }
+  .infobox strong { font-weight: 600; }
+  .infobox-leg { border-color: var(--accent-leg); background: rgba(59,130,246,0.07); color: var(--text-dim); }
+  .infobox-exe { border-color: var(--accent-exe); background: rgba(16,185,129,0.07); color: var(--text-dim); }
+  .infobox-jud { border-color: var(--accent-jud); background: rgba(245,158,11,0.07); color: var(--text-dim); }
+  .infobox-proc { border-color: var(--accent-proc); background: rgba(139,92,246,0.07); color: var(--text-dim); }
+  .infobox-warn { border-color: var(--red); background: rgba(239,68,68,0.07); color: var(--text-dim); }
+  .infobox-tip { border-color: var(--gold); background: rgba(245,197,24,0.06); color: var(--text-dim); }
+
+  /* ===== TABLE ===== */
+  .table-wrap { overflow-x: auto; margin: 16px 0; border-radius: var(--card-radius); border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; font-size: 0.87rem; min-width: 480px; }
+  th {
+    background: var(--surface2); padding: 12px 16px; text-align: left;
+    font-weight: 600; font-size: 0.8rem; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+  }
+  td { padding: 11px 16px; border-bottom: 1px solid rgba(42,51,69,0.6); color: var(--text-dim); }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+
+  /* ===== PROCESS FLOW ===== */
+  .flow {
+    display: flex; flex-direction: column; gap: 0;
+    position: relative;
+    padding-left: 28px;
+    border-left: 2px solid var(--border);
+    margin-left: 12px;
+  }
+  .flow-step {
+    position: relative;
+    padding: 0 0 28px 20px;
+  }
+  .flow-step:last-child { padding-bottom: 0; }
+  .flow-num {
+    position: absolute; left: -36px; top: 0;
+    width: 24px; height: 24px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 700;
+    border: 2px solid;
+  }
+  .flow-num-proc { border-color: var(--accent-proc); background: rgba(139,92,246,0.15); color: var(--accent-proc); }
+  .flow-num-leg { border-color: var(--accent-leg); background: rgba(59,130,246,0.15); color: var(--accent-leg); }
+  .flow-step-title { font-weight: 600; font-size: 0.92rem; margin-bottom: 6px; }
+  .flow-step p { font-size: 0.85rem; color: var(--text-dim); }
+
+  /* ===== QUORUM PILLS ===== */
+  .pill {
+    display: inline-block;
+    padding: 3px 10px; border-radius: 100px;
+    font-size: 0.77rem; font-weight: 700;
+    border: 1px solid;
+  }
+  .pill-abs { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.3); color: var(--accent-exe); }
+  .pill-simples { background: rgba(59,130,246,0.1); border-color: rgba(59,130,246,0.3); color: var(--accent-leg); }
+  .pill-35 { background: rgba(245,158,11,0.1); border-color: rgba(245,158,11,0.3); color: var(--accent-jud); }
+  .pill-uni { background: rgba(139,92,246,0.1); border-color: rgba(139,92,246,0.3); color: var(--accent-proc); }
+
+  /* ===== FLASHCARDS ===== */
+  .flashcard-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+  .flashcard {
+    perspective: 1000px; cursor: pointer;
+    height: 180px; user-select: none;
+  }
+  .flashcard-inner {
+    position: relative; width: 100%; height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.55s cubic-bezier(.4,0,.2,1);
+    border-radius: var(--card-radius);
+  }
+  .flashcard.flipped .flashcard-inner { transform: rotateY(180deg); }
+  .flashcard-front, .flashcard-back {
+    position: absolute; inset: 0;
+    backface-visibility: hidden;
+    border-radius: var(--card-radius);
+    padding: 20px;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center;
+    border: 1px solid var(--border);
+  }
+  .flashcard-front {
+    background: var(--surface);
+    font-size: 0.9rem; font-weight: 600;
+    color: var(--text);
+  }
+  .flashcard-back {
+    background: var(--surface2);
+    transform: rotateY(180deg);
+    font-size: 0.83rem;
+    color: var(--text-dim);
+    line-height: 1.55;
+  }
+  .flashcard-label {
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 10px; opacity: 0.6;
+  }
+  .flashcard-front::after {
+    content: '↻ clique para virar';
+    position: absolute; bottom: 12px;
+    font-size: 0.65rem; color: var(--text-muted);
+    font-weight: 400;
+  }
+  .fc-leg .flashcard-front { border-color: rgba(59,130,246,0.25); }
+  .fc-exe .flashcard-front { border-color: rgba(16,185,129,0.25); }
+  .fc-jud .flashcard-front { border-color: rgba(245,158,11,0.25); }
+  .fc-proc .flashcard-front { border-color: rgba(139,92,246,0.25); }
+  .fc-leg .flashcard-back { border-color: rgba(59,130,246,0.25); background: rgba(59,130,246,0.06); }
+  .fc-exe .flashcard-back { border-color: rgba(16,185,129,0.25); background: rgba(16,185,129,0.06); }
+  .fc-jud .flashcard-back { border-color: rgba(245,158,11,0.25); background: rgba(245,158,11,0.06); }
+  .fc-proc .flashcard-back { border-color: rgba(139,92,246,0.25); background: rgba(139,92,246,0.06); }
+
+  /* ===== QUIZ ===== */
+  .quiz-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--card-radius);
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+  .quiz-num { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 10px; }
+  .quiz-q { font-size: 0.95rem; font-weight: 500; margin-bottom: 18px; line-height: 1.5; }
+  .quiz-options { display: flex; flex-direction: column; gap: 8px; }
+  .quiz-opt {
+    padding: 11px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    background: var(--surface2);
+    color: var(--text-dim);
+    text-align: left;
+    transition: all 0.2s;
+  }
+  .quiz-opt:hover { border-color: var(--accent-leg); color: var(--text); }
+  .quiz-opt.correct { background: rgba(34,197,94,0.12); border-color: rgba(34,197,94,0.5); color: var(--green); }
+  .quiz-opt.wrong { background: rgba(239,68,68,0.1); border-color: rgba(239,68,68,0.4); color: var(--red); }
+  .quiz-opt.disabled { cursor: default; pointer-events: none; }
+  .quiz-feedback {
+    margin-top: 14px; padding: 12px 16px;
+    border-radius: 8px; font-size: 0.85rem; display: none;
+    line-height: 1.5;
+  }
+  .quiz-feedback.show { display: block; }
+  .quiz-feedback.ok { background: rgba(34,197,94,0.1); color: var(--green); border: 1px solid rgba(34,197,94,0.3); }
+  .quiz-feedback.fail { background: rgba(239,68,68,0.1); color: var(--red); border: 1px solid rgba(239,68,68,0.3); }
+  .score-box {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--card-radius);
+    padding: 20px 24px;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .score-num { font-family: var(--font-title); font-size: 2.5rem; color: var(--gold); }
+  .score-label { font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; }
+  #btn-reset {
+    background: rgba(245,197,24,0.1);
+    border: 1px solid rgba(245,197,24,0.3);
+    color: var(--gold);
+    padding: 10px 24px; border-radius: 8px;
+    font-size: 0.85rem; font-weight: 600;
+    cursor: pointer; margin-top: 10px;
+    font-family: var(--font-body);
+    transition: background 0.2s;
+  }
+  #btn-reset:hover { background: rgba(245,197,24,0.2); }
+
+  /* ===== TAGS ===== */
+  .tag {
+    display: inline-block;
+    padding: 2px 8px; border-radius: 4px;
+    font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .tag-art { background: rgba(59,130,246,0.15); color: #93c5fd; }
+  .tag-stf { background: rgba(245,158,11,0.15); color: #fcd34d; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 640px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    main { padding: 24px 16px 60px; }
+    header { padding: 40px 16px 30px; }
+    .section-title { font-size: 1.4rem; }
+    .flashcard { height: 200px; }
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    text-align: center; padding: 32px 24px;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted); font-size: 0.8rem;
+  }
+  footer strong { color: var(--text-dim); }
+
+  /* ===== PROGRESS ===== */
+  .progress-bar {
+    width: 100%; height: 4px; background: var(--border);
+    border-radius: 100px; margin-bottom: 24px;
+  }
+  .progress-fill { height: 100%; border-radius: 100px; transition: width 0.4s; }
+
+  /* ===== SCROLL TO TOP ===== */
+  #totop {
+    position: fixed; bottom: 24px; right: 24px;
+    width: 40px; height: 40px;
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 50%; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; color: var(--text-muted);
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s;
+    z-index: 200;
+  }
+  #totop.visible { opacity: 1; pointer-events: all; }
+  #totop:hover { color: var(--text); border-color: var(--accent-leg); }
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="header-tag">Relatório de Estudo para Prova</div>
+  <h1>Tripartição dos Poderes<br>Constituição Federal de 1988</h1>
+  <p>Com base em <strong>Coleção Esquematizado — Direito Constitucional 29ª Ed. 2025</strong>, Pedro Lenza.</p>
+  <div class="header-badges">
+    <span class="badge badge-leg">⚖ Legislativo</span>
+    <span class="badge badge-proc">📜 Processo Legislativo</span>
+    <span class="badge badge-exe">🏛 Executivo</span>
+    <span class="badge badge-jud">⚖ Judiciário</span>
+  </div>
+</header>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="nav-inner">
+    <a href="#teoria">Teoria Geral</a>
+    <a href="#legislativo">Legislativo</a>
+    <a href="#processo">Processo Legislativo</a>
+    <a href="#executivo">Executivo</a>
+    <a href="#judiciario">Judiciário</a>
+    <a href="#flashcards">Flashcards</a>
+    <a href="#quiz">Questões</a>
+  </div>
+</nav>
+
+<!-- ===== MAIN ===== -->
+<main>
+
+  <!-- ==============================
+       1. TEORIA GERAL
+       ============================== -->
+  <section id="teoria">
+    <div class="section-header">
+      <div class="section-icon icon-leg">🏗</div>
+      <div>
+        <div class="section-title" style="color:var(--text)">Teoria Geral da Separação dos Poderes</div>
+        <div class="section-subtitle">Bases históricas, funções típicas e atípicas, freios e contrapesos</div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title"><span class="card-dot dot-leg"></span>Aristóteles → Três Funções</div>
+        <p>Aristóteles (<em>Política</em>) identificou três funções distintas do poder soberano: <strong>editar normas gerais</strong>, <strong>aplicá-las ao caso concreto</strong> e <strong>dirimir conflitos</strong>. Porém, à época, as três funções concentravam-se numa única pessoa — o soberano ("L'État c'est moi").</p>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="card-dot dot-leg"></span>Montesquieu → Separação Orgânica</div>
+        <p>Em <em>O Espírito das Leis</em>, Montesquieu aprimorou a teoria: cada função corresponderia a um <strong>órgão distinto, autônomo e independente</strong>. Inspirou as Revoluções Americana e Francesa. O Art. 16 da Declaração Francesa (1789) consagrou a separação como dogma constitucional.</p>
+        <div class="infobox infobox-leg" style="margin-top:12px">
+          <p>⚡ A doutrina decorreu empiricamente da evolução constitucional inglesa (Bill of Rights, 1689), teorizada por Locke e popularizada por Montesquieu.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:24px">
+      <div class="card highlight">
+        <div class="card-title">🎯 Finalidade da Separação dos Poderes (STF — MS 23.452)</div>
+        <p style="font-size:0.9rem">"O sistema constitucional brasileiro, ao consagrar o princípio da limitação de poderes, teve por objetivo instituir modelo destinado a <strong>impedir a formação de instâncias hegemônicas de poder no âmbito do Estado</strong>". O mecanismo de <strong>freios e contrapesos</strong> impõe a colaboração, o consenso e a fiscalização recíproca.</p>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--font-title);font-weight:400;font-size:1.2rem;margin:28px 0 16px;color:var(--text-dim)">Funções Típicas e Atípicas</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Órgão</th>
+            <th>Função Típica</th>
+            <th>Atípica — Natureza Executiva</th>
+            <th>Atípica — Natureza Jurisdicional</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong style="color:var(--accent-leg)">Legislativo</strong></td>
+            <td>Legislar + Fiscalização contábil/financeira</td>
+            <td>Dispor sobre organização, cargos, férias de servidores</td>
+            <td>Senado julga PR nos crimes de responsabilidade (art. 52, I)</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--accent-exe)">Executivo</strong></td>
+            <td>Chefia de Estado, governo e atos de administração</td>
+            <td>—</td>
+            <td>Aprecia defesas e recursos administrativos</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--accent-jud)">Judiciário</strong></td>
+            <td>Julgar (função jurisdicional)</td>
+            <td>Administra; concede licenças/férias (art. 96, I, f)</td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-wrap" style="margin-top:12px">
+      <table>
+        <thead>
+          <tr>
+            <th>Órgão</th>
+            <th>Atípica — Natureza Legislativa</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong style="color:var(--accent-exe)">Executivo</strong></td>
+            <td>Adota Medida Provisória com força de lei (art. 62)</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--accent-jud)">Judiciário</strong></td>
+            <td>Elabora regimento interno dos tribunais (art. 96, I, a)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="infobox infobox-warn" style="margin-top:20px">
+      <p>⚠️ <strong>O Poder é uno, indivisível e indelegável!</strong> A expressão "tripartição de Poderes" é imprecisa. O que se divide são as <em>funções</em>, exercidas por <em>órgãos</em> distintos. O poder em si emana do povo e é uno (art. 2.º, CF/88).</p>
+    </div>
+  </section>
+
+  <!-- ==============================
+       2. PODER LEGISLATIVO
+       ============================== -->
+  <section id="legislativo">
+    <div class="section-header">
+      <div class="section-icon icon-leg">⚖</div>
+      <div>
+        <div class="section-title" style="color:var(--accent-leg)">Poder Legislativo</div>
+        <div class="section-subtitle">Congresso Nacional: Câmara dos Deputados e Senado Federal</div>
+      </div>
+    </div>
+
+    <div class="infobox infobox-leg">
+      <p><strong>Art. 44, CF/88:</strong> O Poder Legislativo é exercido pelo <strong>Congresso Nacional</strong>, que se compõe da <strong>Câmara dos Deputados</strong> e do <strong>Senado Federal</strong> — sistema <em>bicameral federativo</em>.</p>
+    </div>
+
+    <h3 style="font-family:var(--font-title);font-weight:400;font-size:1.2rem;margin:28px 0 16px;color:var(--text-dim)">Câmara dos Deputados × Senado Federal</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Característica</th>
+            <th style="color:var(--accent-leg)">Câmara dos Deputados</th>
+            <th style="color:var(--accent-jud)">Senado Federal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Representa</td><td>O <strong>povo</strong></td><td>Os <strong>Estados + DF</strong></td></tr>
+          <tr><td>Sistema eleitoral</td><td>Proporcional à população</td><td>Majoritário</td></tr>
+          <tr><td>Nº de membros</td><td>513 Deputados (LC 78/93); mín. 8, máx. 70 por Estado/DF; Territórios: 4</td><td>81 Senadores (3 por Estado + 3 do DF)</td></tr>
+          <tr><td>Mandato</td><td>4 anos (1 legislatura)</td><td>8 anos (2 legislaturas)</td></tr>
+          <tr><td>Renovação</td><td>Integral a cada 4 anos</td><td>Alternada: 1/3 e 2/3 a cada 4 anos</td></tr>
+          <tr><td>Idade mínima</td><td>21 anos</td><td>35 anos</td></tr>
+          <tr><td>Subsídio (2025)</td><td colspan="2">R$ 46.366,19 (DLG 172/2022)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="font-family:var(--font-title);font-weight:400;font-size:1.2rem;margin:28px 0 16px;color:var(--text-dim)">Competências Privativas Comparadas</h3>
+    <div class="grid-2">
+      <div class="card leg-card">
+        <div class="card-title"><span class="card-dot dot-leg"></span>Câmara dos Deputados <span class="tag tag-art">Art. 51</span></div>
+        <ul>
+          <li>Autorizar (2/3) processo contra PR, Vice-PR e Ministros de Estado</li>
+          <li>Tomada de contas do PR (quando não apresentadas em 60 dias)</li>
+          <li>Elaborar o regimento interno</li>
+          <li>Eleger membros do Conselho da República (art. 89, VII)</li>
+          <li>Iniciativa de lei para fixação de remuneração dos seus servidores</li>
+        </ul>
+      </div>
+      <div class="card" style="border-color:rgba(245,158,11,0.25)">
+        <div class="card-title"><span class="card-dot dot-jud"></span>Senado Federal <span class="tag tag-art">Art. 52</span></div>
+        <ul>
+          <li>Processar e julgar PR/Vice-PR nos crimes de responsabilidade</li>
+          <li>Julgar Ministros do STF, membros do CNJ, CNMP, PGR e AGU (crimes resp.)</li>
+          <li>Aprovação prévia (voto <em>secreto</em>) de Magistrados, TCU, Governador de TF, Bacen, PGR e outros</li>
+          <li>Suspender execução de lei declarada inconstitucional pelo STF</li>
+          <li>Autorizar operações externas de natureza financeira</li>
+          <li>Avaliar o Sistema Tributário Nacional</li>
+          <li>Exonerar PGR (antes do mandato) — maioria absoluta, voto secreto</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--font-title);font-weight:400;font-size:1.2rem;margin:28px 0 16px;color:var(--text-dim)">Imunidades Parlamentares</h3>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title"><span class="card-dot dot-leg"></span>Material / Inviolabilidade <span class="tag tag-art">Art. 53, caput</span></div>
+        <p>Parlamentares são <strong>invioláveis, civil e penalmente</strong>, por opiniões, palavras e votos proferidos <em>no exercício do mandato</em> (nexo causal com a atividade parlamentar). Alcança entrevistas, pronunciamentos transmitidos à imprensa e declarações à mídia vinculadas ao mandato.</p>
+        <div class="infobox infobox-tip" style="margin-top:12px">
+          <p>💡 A imunidade material não é absoluta: manifestações sem nexo com o mandato não estão protegidas. Comportamentos excessivos podem configurar quebra de decoro.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="card-dot dot-leg"></span>Formal / Processual <span class="tag tag-art">Art. 53, §§ 2º–5º</span></div>
+        <p><strong>Desde a diplomação</strong>, parlamentares <strong>não podem ser presos</strong>, salvo em flagrante de crime inafiançável. Neste caso, os autos vão à Casa respectiva em 24h; a Casa delibera por <em>maioria absoluta + votação ostensiva (voto aberto)</em>. A prisão penal só se efetiva com sentença condenatória transitada em julgado.</p>
+        <div class="infobox infobox-warn" style="margin-top:12px">
+          <p>⚠️ A EC 35/2001 aboliu o voto secreto para resolver sobre prisão em flagrante e sustação de ação penal.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--font-title);font-weight:400;font-size:1.2rem;margin:28px 0 16px;color:var(--text-dim)">Comissões Parlamentares de Inquérito (CPI) <span class="tag tag-art">Art. 58, §3º</span></h3>
+    <div class="card">
+      <p style="margin-bottom:12px">A CPI terá <strong>poderes de investigação próprios das autoridades judiciais</strong>, mas não pode substituir o Judiciário. Pode:</p>
+      <ul>
+        <li>Quebrar sigilo bancário, fiscal e telefônico (por deliberação fundamentada e pertinência com o objeto)</li>
+        <li>Convocar e ouvir testemunhas, peritos e autoridades</li>
+        <li>Requerer informações e documentos</li>
+      </ul>
+      <div class="infobox infobox-tip" style="margin-top:12px">
+        <p>🔒 <strong>Reserva constitucional de jurisdição:</strong> CPI <em>não pode</em> decretar prisão preventiva, busca e apreensão domiciliar, interceptação telefônica ou afastamento de cargo.</p>
+      </div>
+      <div class="infobox infobox-leg" style="margin-top:8px">
+        <p><strong>CPIs estaduais:</strong> podem quebrar sigilos desde que observados os requisitos. <strong>CPIs municipais:</strong> não podem, por si, quebrar sigilo bancário — dependem de autorização judicial.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================
+       3. PROCESSO LEGISLATIVO
+       ============================== -->
+  <section id="processo">
+    <div class="section-header">
+      <div class="section-icon icon-proc">📜</div>
+      <div>
+        <div class="section-title" style="color:var(--accent-proc)">Processo Legislativo</div>
+        <div class="section-subtitle">Espécies normativas, fases e iniciativa — Art. 59 a 69 CF/88</div>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--font-title);font-weight:400;font-size:1.2rem;margin:0 0 16px;color:var(--text-dim)">Espécies Normativas <span class="tag tag-art">Art. 59</span></h3>
+    <div class="grid-3">
+      <div class="card proc-card">
+        <div class="card-title"><span class="card-dot dot-proc"></span>EC — Emenda Constitucional</div>
+        <p>Reforma a CF/88. Proposta por: 1/3 dos membros de qualquer Casa, PR, mais da metade das Assembleias (maioria relativa). Aprovação: <strong>3/5 em cada Casa, em 2 turnos</strong>. Promulgada pelas Mesas da CD e SF.</p>
+        <div class="infobox infobox-warn" style="margin-top:12px">
+          <p>🚫 Cláusulas pétreas (art. 60, §4º): forma federativa, voto direto/secreto/universal/periódico, separação de poderes, direitos e garantias individuais.</p>
+        </div>
+      </div>
+      <div class="card proc-card">
+        <div class="card-title"><span class="card-dot dot-proc"></span>LC — Lei Complementar</div>
+        <p>Exige <strong>maioria absoluta</strong> dos membros de cada Casa. Reservada às matérias expressamente previstas na CF. Hierarquia <em>não superior</em> à lei ordinária (relação de competência, não hierarquia).</p>
+      </div>
+      <div class="card proc-card">
+        <div class="card-title"><span class="card-dot dot-proc"></span>LO — Lei Ordinária</div>
+        <p>Aprovada por <strong>maioria simples</strong> (maioria dos presentes, com quorum mínimo de maioria absoluta). Regra geral do processo legislativo.</p>
+      </div>
+      <div class="card proc-card">
+        <div class="card-title"><span class="card-dot dot-proc"></span>Lei Delegada</div>
+        <p>Elaborada pelo <strong>PR mediante delegação do CN</strong> por resolução, especificando conteúdo e condições. <em>Não podem ser delegadas:</em> atos de competência exclusiva do CN, CD ou SF, matéria reservada à LC, legislação sobre partidos, plano plurianual, diretrizes orçamentárias, direitos individuais, cividade e direito eleitoral, criminal etc.</p>
+      </div>
+      <div class="card proc-card">
+        <div class="card-title"><span class="card-dot dot-proc"></span>Medida Provisória (MP)</div>
+        <p>Adotada pelo PR em casos de <strong>relevância e urgência</strong>. Força de lei imediata. Vigência: <strong>60 dias + prorrogação por mais 60</strong>. Apreciada por Comissão Mista e depois pelo CN (separadamente). Veda-se reedição na mesma sessão legislativa.</p>
+        <div class="infobox infobox-warn" style="margin-top:8px">
+          <p>🚫 Vedada em: matéria penal, processual penal e civil, organização do MP e Judiciário, nacionalidade, cidadania, direitos políticos, partidos, direito eleitoral e EC aprovada no período.</p>
+        </div>
+      </div>
+      <div class="card proc-card">
+        <div class="card-title"><span class="card-dot dot-proc"></span>Decreto Legislativo e Resolução</div>
+        <p><strong>Decreto Legislativo:</strong> competências exclusivas do CN (art. 49); aprovação de tratados internacionais; subsidia MP não convertida. <strong>Resolução:</strong> competências privativas de cada Casa (arts. 51 e 52); não vai à sanção.</p>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--font-title);font-weight:400;font-size:1.2rem;margin:28px 0 16px;color:var(--text-dim)">Fases do Processo Legislativo Ordinário</h3>
+    <div class="card">
+      <div class="flow">
+        <div class="flow-step">
+          <div class="flow-num flow-num-proc">1</div>
+          <div class="flow-step-title">Fase Introdutória — Iniciativa</div>
+          <p>Quem pode apresentar projeto de lei? <strong>Qualquer membro ou comissão da CD ou SF; PR; STF e Tribunais Superiores; PGR; cidadãos (iniciativa popular — 1% do eleitorado nacional, em pelo menos 5 Estados, com mínimo de 3/10% dos eleitores de cada).</strong></p>
+          <div class="infobox infobox-proc" style="margin-top:8px">
+            <p>📌 <strong>Iniciativa privativa do PR:</strong> fixação ou modificação dos efetivos das Forças Armadas; servidores públicos; criação de cargos; organização administrativa; criação de territórios; matéria tributária em determinadas hipóteses.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num flow-num-proc">2</div>
+          <div class="flow-step-title">Fase Constitutiva — Deliberação Parlamentar</div>
+          <p>O projeto tramita nas <strong>comissões temáticas</strong> → <strong>Comissão de Finanças e Tributação</strong> (se envolver despesa) → <strong>CCJ</strong> (constitucionalidade). O parecer da CCJ é <em>terminativo</em>. O Plenário vota se não houver delegação interna ou se houver recurso de 1/10 dos membros. <strong>Casa revisora</strong>: aprova, rejeita (arquiva) ou emenda (só o que foi alterado volta à Casa iniciadora).</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num flow-num-proc">3</div>
+          <div class="flow-step-title">Deliberação Executiva — Sanção ou Veto</div>
+          <p><strong>Sanção:</strong> expressa (15 dias úteis) ou tácita (silêncio do PR). <strong>Veto:</strong> total ou parcial (nunca de palavra isolada); fundamentado em inconstitucionalidade ou contrariedade ao interesse público; apreciado em sessão conjunta do CN, podendo ser derrubado por <em>maioria absoluta em votação ostensiva (aberta)</em>.</p>
+          <div class="infobox infobox-proc" style="margin-top:8px">
+            <p>⏱ <strong>Prazo do CN para deliberar sobre o veto:</strong> 30 dias a contar do recebimento. Após 5ª quarta-feira de cada sessão extraordinária, o veto entra automaticamente na pauta.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num flow-num-proc">4</div>
+          <div class="flow-step-title">Fase Complementar — Promulgação e Publicação</div>
+          <p><strong>Promulgação:</strong> atesta a existência da lei; normalmente feita pelo PR. Se não promulgar em 48h (nos casos de sanção tácita ou derrubada de veto), o Presidente do Senado o fará e, se este também não o fizer em igual prazo, caberá ao Vice-Presidente do Senado. <strong>Publicação:</strong> leva o texto ao conhecimento geral (condição de eficácia).</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--font-title);font-weight:400;font-size:1.2rem;margin:28px 0 16px;color:var(--text-dim)">Processo Legislativo Sumário (Urgência Constitucional) <span class="tag tag-art">Art. 64</span></h3>
+    <div class="card proc-card">
+      <p style="margin-bottom:12px">O PR pode solicitar urgência para projetos de sua iniciativa. Os prazos são:</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Etapa</th><th>Prazo</th></tr></thead>
+          <tbody>
+            <tr><td>CD (Casa Iniciadora)</td><td>45 dias</td></tr>
+            <tr><td>SF (Casa Revisora)</td><td>45 dias</td></tr>
+            <tr><td>CD (se SF emendou)</td><td>10 dias</td></tr>
+            <tr><td><strong>Total máximo</strong></td><td><strong>100 dias</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="infobox infobox-proc" style="margin-top:12px">
+        <p>⚠️ Se a Casa não votar no prazo: <strong>sobrestar</strong> as demais deliberações (exceto as com prazo constitucional determinado, como MPs). Os prazos não correm durante o recesso. Não se aplica a projetos de código.</p>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--font-title);font-weight:400;font-size:1.2rem;margin:28px 0 16px;color:var(--text-dim)">Emenda Constitucional (PEC) — Processo Especial <span class="tag tag-art">Art. 60</span></h3>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title"><span class="card-dot dot-proc"></span>Legitimados</div>
+        <ul>
+          <li>1/3 dos membros da CD ou SF</li>
+          <li>Presidente da República</li>
+          <li>Mais da metade das Assembleias Legislativas (maioria relativa de cada)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="card-dot dot-proc"></span>Aprovação</div>
+        <ul>
+          <li>3/5 dos membros em cada Casa</li>
+          <li>Em 2 turnos em cada Casa</li>
+          <li>Promulgada pelas Mesas da CD e SF</li>
+          <li>Matéria rejeitada: não pode ser reapresentada na mesma sessão legislativa</li>
+        </ul>
+      </div>
+    </div>
+    <div class="infobox infobox-warn">
+      <p>🚫 <strong>Limitações circunstanciais (art. 60, §1º):</strong> A CF não pode ser emendada na vigência de intervenção federal, estado de defesa ou estado de sítio.</p>
+    </div>
+
+    <h3 style="font-family:var(--font-title);font-weight:400;font-size:1.2rem;margin:28px 0 16px;color:var(--text-dim)">Quadro-Síntese: Quóruns de Votação</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Espécie</th><th>Quórum</th><th>Turno(s)</th></tr></thead>
+        <tbody>
+          <tr><td>Emenda Constitucional</td><td><span class="pill pill-uni">3/5 dos membros</span></td><td>2 em cada Casa</td></tr>
+          <tr><td>Lei Complementar</td><td><span class="pill pill-abs">Maioria absoluta</span></td><td>1</td></tr>
+          <tr><td>Lei Ordinária</td><td><span class="pill pill-simples">Maioria simples</span></td><td>1</td></tr>
+          <tr><td>Lei Delegada</td><td><span class="pill pill-simples">Maioria simples</span></td><td>1 (votação única; emendas supressivas)</td></tr>
+          <tr><td>Derrubada de Veto</td><td><span class="pill pill-abs">Maioria absoluta</span></td><td>Sessão conjunta, voto aberto</td></tr>
+          <tr><td>MP — conversão em lei</td><td><span class="pill pill-simples">Maioria simples</span></td><td>Separadamente (CD e SF)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ==============================
+       4. PODER EXECUTIVO
+       ============================== -->
+  <section id="executivo">
+    <div class="section-header">
+      <div class="section-icon icon-exe">🏛</div>
+      <div>
+        <div class="section-title" style="color:var(--accent-exe)">Poder Executivo</div>
+        <div class="section-subtitle">Presidente da República, atribuições e responsabilidade</div>
+      </div>
+    </div>
+
+    <div class="infobox infobox-exe">
+      <p><strong>Art. 76, CF/88:</strong> O Poder Executivo é exercido pelo <strong>Presidente da República</strong>, auxiliado pelos Ministros de Estado. O Brasil adota o <em>presidencialismo</em>: o PR é, ao mesmo tempo, Chefe de Estado e Chefe de Governo.</p>
+    </div>
+
+    <h3 style="font-family:var(--font-title);font-weight:400;font-size:1.2rem;margin:28px 0 16px;color:var(--text-dim)">Requisitos e Eleição do Presidente</h3>
+    <div class="grid-2">
+      <div class="card exe-card">
+        <div class="card-title"><span class="card-dot dot-exe"></span>Requisitos de Elegibilidade</div>
+        <ul>
+          <li><strong>Brasileiro nato</strong> (art. 12, §3º, I)</li>
+          <li>Mínimo de <strong>35 anos</strong></li>
+          <li>Pleno exercício dos direitos políticos</li>
+          <li>Alistamento eleitoral</li>
+          <li>Domicílio eleitoral na circunscrição</li>
+          <li>Filiação partidária</li>
+          <li>Não ser inelegível (art. 14, §§ 4º–8º)</li>
+        </ul>
+      </div>
+      <div class="card exe-card">
+        <div class="card-title"><span class="card-dot dot-exe"></span>Sistema Eleitoral e Mandato</div>
+        <ul>
+          <li>Sistema majoritário de dois turnos</li>
+          <li>Eleito junto com o Vice-Presidente (chapa)</li>
+          <li>Mandato de <strong>4 anos</strong></li>
+          <li>Permitida uma única <strong>reeleição</strong> para o período subsequente</li>
+          <li>Posse em 1º de janeiro; eleição no 1º domingo de outubro (1º turno)</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--font-title);font-weight:400;font-size:1.2rem;margin:28px 0 16px;color:var(--text-dim)">Atribuições do Presidente da República <span class="tag tag-art">Art. 84</span></h3>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title"><span class="card-dot dot-exe"></span>Como Chefe de Estado</div>
+        <ul>
+          <li>Representar a União internacionalmente</li>
+          <li>Celebrar tratados internacionais</li>
+          <li>Declarar guerra (após autorização CN) e paz</li>
+          <li>Decretar estado de defesa e estado de sítio</li>
+          <li>Nomear Ministros do STF (sabatinados pelo SF)</li>
+          <li>Conceder indulto e comutar penas</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="card-dot dot-exe"></span>Como Chefe de Governo</div>
+        <ul>
+          <li>Nomear e exonerar Ministros de Estado</li>
+          <li>Exercer a direção superior da Administração Federal</li>
+          <li>Vetar ou sancionar projetos de lei</li>
+          <li>Editar Medidas Provisórias (art. 62)</li>
+          <li>Editar Leis Delegadas (mediante delegação do CN)</li>
+          <li>Expedir decretos e regulamentos para fiel execução das leis</li>
+          <li>Elaborar e encaminhar Plano Plurianual, LDO e LOA</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--font-title);font-weight:400;font-size:1.2rem;margin:28px 0 16px;color:var(--text-dim)">Responsabilidade do Presidente — Crimes</h3>
+    <div class="grid-2">
+      <div class="card highlight">
+        <div class="card-title">🔹 Crimes Comuns</div>
+        <div class="flow" style="border-left-color:rgba(59,130,246,0.3);margin-left:6px">
+          <div class="flow-step">
+            <div class="flow-num flow-num-leg" style="left:-30px">1</div>
+            <div class="flow-step-title">CD autoriza (2/3 dos membros)</div>
+            <p>Votação ostensiva (voto aberto — EC 76/2013).</p>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num flow-num-leg" style="left:-30px">2</div>
+            <div class="flow-step-title">STF processa e julga</div>
+            <p>Art. 102, I, "b". Condenação impõe perda do cargo + inabilitação por 8 anos.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card highlight">
+        <div class="card-title">🔹 Crimes de Responsabilidade (Impeachment)</div>
+        <div class="flow" style="border-left-color:rgba(245,158,11,0.3);margin-left:6px">
+          <div class="flow-step">
+            <div class="flow-num" style="left:-30px;border-color:var(--accent-jud);background:rgba(245,158,11,0.15);color:var(--accent-jud)">1</div>
+            <div class="flow-step-title">CD autoriza (2/3 dos membros)</div>
+            <p>Art. 51, I. Votação ostensiva.</p>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num" style="left:-30px;border-color:var(--accent-jud);background:rgba(245,158,11,0.15);color:var(--accent-jud)">2</div>
+            <div class="flow-step-title">SF processa e julga (art. 52, I)</div>
+            <p>Presidido pelo Presidente do STF. Condenação: 2/3 dos membros. Sanção: perda do cargo + inabilitação por 8 anos (art. 52, parágrafo único).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="infobox infobox-exe" style="margin-top:16px">
+      <p>📌 <strong>Imunidade relativa do PR:</strong> Enquanto em exercício, o PR <em>não pode ser responsabilizado</em> por atos estranhos ao exercício do cargo. Para crimes comuns praticados <em>durante</em> o mandato e <em>relacionados ao cargo</em>, é necessária autorização da CD.</p>
+    </div>
+
+    <h3 style="font-family:var(--font-title);font-weight:400;font-size:1.2rem;margin:28px 0 16px;color:var(--text-dim)">Hierarquia de Substituição e Vacância</h3>
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Situação</th><th>Regra</th></tr></thead>
+          <tbody>
+            <tr><td>Impedimento / Ausência do PR</td><td>Vice-PR assume; se este também impedido, Pres. CD → Pres. SF → Pres. STF</td></tr>
+            <tr><td>Vacância dos dois primeiros anos do mandato</td><td>Eleição direta em 90 dias</td></tr>
+            <tr><td>Vacância nos últimos dois anos</td><td>Eleição indireta pelo CN em 30 dias (mandato-tampão)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================
+       5. PODER JUDICIÁRIO
+       ============================== -->
+  <section id="judiciario">
+    <div class="section-header">
+      <div class="section-icon icon-jud">⚖</div>
+      <div>
+        <div class="section-title" style="color:var(--accent-jud)">Poder Judiciário</div>
+        <div class="section-subtitle">Estrutura, garantias da magistratura e tribunais — Art. 92 CF/88</div>
+      </div>
+    </div>
+
+    <div class="infobox infobox-jud">
+      <p><strong>Art. 92, CF/88:</strong> São órgãos do Poder Judiciário: STF · CNJ · STJ · TST · TRFs e Juízes Federais · TRTs e Juízes do Trabalho · TREs e Juízes Eleitorais · STM · TMs e Juízes Militares · TJs e Juízes dos Estados, DF e Territórios.</p>
+    </div>
+
+    <h3 style="font-family:var(--font-title);font-weight:400;font-size:1.2rem;margin:28px 0 16px;color:var(--text-dim)">Garantias Constitucionais dos Magistrados <span class="tag tag-art">Art. 95</span></h3>
+    <div class="grid-3">
+      <div class="card jud-card">
+        <div class="card-title"><span class="card-dot dot-jud"></span>Vitaliciedade</div>
+        <p>Após 2 anos de exercício (estágio probatório), o magistrado só perde o cargo por sentença judicial transitada em julgado.</p>
+      </div>
+      <div class="card jud-card">
+        <div class="card-title"><span class="card-dot dot-jud"></span>Inamovibilidade</div>
+        <p>Não pode ser removido, promovido ou aposentado sem seu consentimento, <em>salvo</em> remoção por interesse público decidida pelo tribunal por voto de 2/3 (com ampla defesa).</p>
+      </div>
+      <div class="card jud-card">
+        <div class="card-title"><span class="card-dot dot-jud"></span>Irredutibilidade de Subsídios</div>
+        <p>Vedada qualquer redução dos subsídios. Porém, incide imposto de renda e demais impostos gerais.</p>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--font-title);font-weight:400;font-size:1.2rem;margin:28px 0 16px;color:var(--text-dim)">Estrutura: Órgãos e Competências Fundamentais</h3>
+
+    <!-- STF -->
+    <div class="card jud-card" style="margin-bottom:16px">
+      <div class="card-title"><span class="card-dot dot-jud"></span>STF — Supremo Tribunal Federal <span class="tag tag-art">Art. 101–102</span></div>
+      <div class="grid-2" style="margin-top:14px">
+        <div>
+          <p style="font-size:0.82rem;font-weight:600;color:var(--text-muted);margin-bottom:8px">COMPOSIÇÃO</p>
+          <p style="font-size:0.88rem">11 Ministros; brasileiros natos; entre 35 e 65 anos; notável saber jurídico e reputação ilibada. Nomeados pelo PR após aprovação do SF por <em>maioria absoluta</em>.</p>
+        </div>
+        <div>
+          <p style="font-size:0.82rem;font-weight:600;color:var(--text-muted);margin-bottom:8px">COMPETÊNCIA ORIGINÁRIA PRINCIPAL (art. 102, I)</p>
+          <ul style="font-size:0.85rem;color:var(--text-dim);padding-left:16px">
+            <li>Ação direta de inconstitucionalidade (ADI)</li>
+            <li>Ação declaratória de constitucionalidade (ADC)</li>
+            <li>ADPF — Arguição de Descumprimento de Preceito Fundamental</li>
+            <li>Crimes comuns do PR, Vice-PR, Ministros de Estado, Membros do CN, STF, STJ, TST, STM, TCU e chefes de missão diplomática</li>
+            <li>MS e HD contra atos do PR, das Mesas CD e SF e do TCU</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- STJ -->
+    <div class="card jud-card" style="margin-bottom:16px">
+      <div class="card-title"><span class="card-dot dot-jud"></span>STJ — Superior Tribunal de Justiça <span class="tag tag-art">Art. 104–105</span></div>
+      <p style="font-size:0.88rem;margin-bottom:8px">Mínimo de 33 ministros; 1/3 dos TRFs, 1/3 dos TJs, 1/6 da advocacia e 1/6 do MP. Guarda do direito federal infraconstitucional.</p>
+      <ul style="font-size:0.85rem;color:var(--text-dim);padding-left:16px">
+        <li>Julga Governadores de Estado (crimes comuns)</li>
+        <li>Julga desembargadores, membros dos TRFs, TRTs, TREs e Procuradores de Justiça (crimes comuns e de responsabilidade)</li>
+        <li>Processa e julga MS, HC e HD contra atos de Ministro de Estado, dos próprios Comandantes das Forças e do STJ</li>
+      </ul>
+    </div>
+
+    <!-- Justiça Federal e Especializada -->
+    <div class="grid-2">
+      <div class="card jud-card">
+        <div class="card-title"><span class="card-dot dot-jud"></span>Justiça Federal <span class="tag tag-art">Art. 108–109</span></div>
+        <ul>
+          <li>TRFs (instância recursal) + Juízes Federais (1ª instância)</li>
+          <li>Competência: causas em que a União, entidade autárquica ou empresa pública federal figure como parte</li>
+          <li>Crimes previstos em tratados internacionais</li>
+          <li>Disputa de direitos indígenas</li>
+        </ul>
+      </div>
+      <div class="card jud-card">
+        <div class="card-title"><span class="card-dot dot-jud"></span>Justiças Especializadas</div>
+        <ul>
+          <li><strong>Trabalhista:</strong> TST · TRTs · Varas do Trabalho — relações de trabalho (art. 114)</li>
+          <li><strong>Eleitoral:</strong> TSE · TREs · Juízes Eleitorais · Juntas — matéria eleitoral</li>
+          <li><strong>Militar:</strong> STM · TMs · Juízes Militares — crimes militares (art. 124)</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--font-title);font-weight:400;font-size:1.2rem;margin:28px 0 16px;color:var(--text-dim)">TSE — Tribunal Superior Eleitoral <span class="tag tag-art">Art. 119</span></h3>
+    <div class="card jud-card">
+      <p>Mínimo de 7 membros: 3 eleitos dentre Ministros do STF; 2 eleitos dentre Ministros do STJ; 2 advogados nomeados pelo PR (lista tríplice do STF). Presidente e Vice-Presidente: eleitos entre os Ministros do STF. Corregedor: eleito entre os Ministros do STJ.</p>
+      <div class="infobox infobox-jud" style="margin-top:12px">
+        <p>⚖ As decisões do TSE são <strong>irrecorríveis</strong>, salvo as que contrariarem a CF (RE para o STF) ou denegatórias de HC ou MS (RO para o STF).</p>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--font-title);font-weight:400;font-size:1.2rem;margin:28px 0 16px;color:var(--text-dim)">CNJ — Conselho Nacional de Justiça <span class="tag tag-art">Art. 103-B</span></h3>
+    <div class="card jud-card">
+      <p style="margin-bottom:12px">Criado pela EC 45/2004. Órgão de <strong>controle administrativo, financeiro e disciplinar da magistratura</strong> (exceto o STF). Composto de <strong>15 membros</strong>, mandato de 2 anos (1 recondução).</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Origem</th><th>Nº</th></tr></thead>
+          <tbody>
+            <tr><td>Presidente do STF (membro nato)</td><td>1</td></tr>
+            <tr><td>Ministro do STJ (indicado pelo STJ)</td><td>1</td></tr>
+            <tr><td>Ministro do TST (indicado pelo TST)</td><td>1</td></tr>
+            <tr><td>Desembargador de TJ (indicado pelo STF)</td><td>1</td></tr>
+            <tr><td>Juiz estadual (indicado pelo STF)</td><td>1</td></tr>
+            <tr><td>Juiz de TRF (indicado pelo STJ)</td><td>1</td></tr>
+            <tr><td>Juiz federal (indicado pelo STJ)</td><td>1</td></tr>
+            <tr><td>Juiz de TRT (indicado pelo TST)</td><td>1</td></tr>
+            <tr><td>Juiz do trabalho (indicado pelo TST)</td><td>1</td></tr>
+            <tr><td>Membro do MPU (indicado pelo PGR)</td><td>1</td></tr>
+            <tr><td>Membro do MPE (escolhido pelo PGR)</td><td>1</td></tr>
+            <tr><td>Advogados (indicados pela OAB Federal)</td><td>2</td></tr>
+            <tr><td>Cidadãos (1 pela CD, 1 pelo SF)</td><td>2</td></tr>
+            <tr><td><strong>Total</strong></td><td><strong>15</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--font-title);font-weight:400;font-size:1.2rem;margin:28px 0 16px;color:var(--text-dim)">Foro por Prerrogativa de Função — Tabela Síntese</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Autoridade</th><th>Crime Comum</th><th>Crime de Responsabilidade</th></tr></thead>
+        <tbody>
+          <tr><td>PR e Vice-PR</td><td>STF</td><td>Senado Federal</td></tr>
+          <tr><td>Ministros de Estado</td><td>STF</td><td>STF (ou SF se conexo com o PR)</td></tr>
+          <tr><td>Ministros do STF</td><td>STF</td><td>Senado Federal</td></tr>
+          <tr><td>Membros do CN (Dep. Federais e Senadores)</td><td>STF (desde a diplomação)</td><td>Casa correspondente</td></tr>
+          <tr><td>Governadores de Estado</td><td>STJ</td><td>Tribunal Especial (Lei 1.079/50)</td></tr>
+          <tr><td>Desembargadores e membros de Trib. Superiores</td><td>STJ</td><td>STJ</td></tr>
+          <tr><td>Juízes federais e membros do MPU</td><td>TRF</td><td>TRF</td></tr>
+          <tr><td>Prefeitos</td><td>TJ local</td><td>Câmara Municipal (infração pol.-admin.)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="infobox infobox-warn">
+      <p>⚠️ <strong>Interpretação restritiva:</strong> O STF firmou que a prerrogativa de foro é norma de exceção e não pode ser ampliada por Constituições estaduais para autoridades não contempladas pela CF (ADI 2.553, ADIs 6.501/6.516).</p>
+    </div>
+  </section>
+
+  <!-- ==============================
+       6. FLASHCARDS
+       ============================== -->
+  <section id="flashcards">
+    <div class="section-header">
+      <div class="section-icon icon-card">🗂</div>
+      <div>
+        <div class="section-title" style="color:var(--gold)">Flashcards</div>
+        <div class="section-subtitle">Clique no cartão para revelar a resposta</div>
+      </div>
+    </div>
+
+    <div class="flashcard-grid">
+      <!-- F1 -->
+      <div class="flashcard fc-leg" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">
+            <div class="flashcard-label" style="color:var(--accent-leg)">Legislativo</div>
+            Qual a composição do Senado Federal e qual o sistema eleitoral usado?
+          </div>
+          <div class="flashcard-back">
+            <strong>81 Senadores</strong> — 3 por Estado + 3 pelo DF. Eleitos pelo sistema <strong>majoritário</strong>. Mandato de <strong>8 anos</strong>, com renovação alternada (1/3 e 2/3) a cada 4 anos. Cada Senador tem 2 suplentes.
+          </div>
+        </div>
+      </div>
+      <!-- F2 -->
+      <div class="flashcard fc-leg" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">
+            <div class="flashcard-label" style="color:var(--accent-leg)">Imunidade</div>
+            A imunidade material do parlamentar protege o quê e quando?
+          </div>
+          <div class="flashcard-back">
+            Protege <strong>opiniões, palavras e votos</strong> proferidos no exercício do mandato (nexo causal). Alcança entrevistas, declarações à mídia, desde que vinculadas à atividade parlamentar. A proteção é <em>penal e civil</em>. Não é absoluta: manifestações sem nexo ou hate speech podem escapar à proteção.
+          </div>
+        </div>
+      </div>
+      <!-- F3 -->
+      <div class="flashcard fc-proc" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">
+            <div class="flashcard-label" style="color:var(--accent-proc)">Processo Legislativo</div>
+            Quais os requisitos da Emenda Constitucional?
+          </div>
+          <div class="flashcard-back">
+            Proposta por: 1/3 de membros da CD/SF, PR, ou maioria das Assembleias. Aprovação: <strong>3/5 dos membros em cada Casa, em 2 turnos</strong>. Promulgada pelas Mesas. Vedada durante intervenção federal, estado de defesa ou de sítio. Matéria rejeitada: não pode ser reapresentada na mesma sessão legislativa.
+          </div>
+        </div>
+      </div>
+      <!-- F4 -->
+      <div class="flashcard fc-proc" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">
+            <div class="flashcard-label" style="color:var(--accent-proc)">Processo Legislativo</div>
+            Qual a diferença de quórum entre LC e LO?
+          </div>
+          <div class="flashcard-back">
+            <strong>Lei Complementar:</strong> maioria <em>absoluta</em> (mais da metade dos membros).<br><strong>Lei Ordinária:</strong> maioria <em>simples</em> (maioria dos presentes, desde que haja quórum mínimo de maioria absoluta).<br>A relação entre elas é de <em>competência</em>, não de hierarquia.
+          </div>
+        </div>
+      </div>
+      <!-- F5 -->
+      <div class="flashcard fc-exe" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">
+            <div class="flashcard-label" style="color:var(--accent-exe)">Executivo</div>
+            O que é necessário para o Presidente ser processado por crime comum?
+          </div>
+          <div class="flashcard-back">
+            <strong>1º:</strong> Câmara dos Deputados autoriza por <em>2/3 dos membros</em> (votação ostensiva).<br><strong>2º:</strong> STF processa e julga (art. 102, I, b).<br>Condenação: perda do cargo + inabilitação por 8 anos. Se o Senado federal presidir o julgamento (crime de responsabilidade), é presidido pelo Presidente do STF.
+          </div>
+        </div>
+      </div>
+      <!-- F6 -->
+      <div class="flashcard fc-exe" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">
+            <div class="flashcard-label" style="color:var(--accent-exe)">Medida Provisória</div>
+            Quais os prazos da Medida Provisória?
+          </div>
+          <div class="flashcard-back">
+            Vigência: <strong>60 dias</strong>, prorrogável por mais <strong>60 dias</strong>. Votação por Comissão Mista e depois separadamente em cada Casa. Se não convertida em lei: perde eficácia ex tunc. Vedada a reedição na mesma sessão legislativa após rejeição ou perda de eficácia.
+          </div>
+        </div>
+      </div>
+      <!-- F7 -->
+      <div class="flashcard fc-jud" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">
+            <div class="flashcard-label" style="color:var(--accent-jud)">Judiciário</div>
+            Quais as três garantias dos magistrados e o que cada uma significa?
+          </div>
+          <div class="flashcard-back">
+            <strong>Vitaliciedade:</strong> após 2 anos, perde o cargo só por sentença judicial transitada em julgado.<br><strong>Inamovibilidade:</strong> não pode ser removido/promovido sem seu consentimento (exceto por interesse público com voto de 2/3 do tribunal).<br><strong>Irredutibilidade de subsídio:</strong> subsídio não pode ser reduzido.
+          </div>
+        </div>
+      </div>
+      <!-- F8 -->
+      <div class="flashcard fc-jud" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">
+            <div class="flashcard-label" style="color:var(--accent-jud)">STF</div>
+            Qual a composição e os requisitos dos Ministros do STF?
+          </div>
+          <div class="flashcard-back">
+            <strong>11 Ministros</strong>; brasileiros natos; entre 35 e 65 anos; notável saber jurídico e reputação ilibada. Nomeados pelo Presidente da República após aprovação do Senado Federal por <em>maioria absoluta</em>. Mandato vitalício até os 70 anos.
+          </div>
+        </div>
+      </div>
+      <!-- F9 -->
+      <div class="flashcard fc-jud" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">
+            <div class="flashcard-label" style="color:var(--accent-jud)">CNJ</div>
+            Quantos membros tem o CNJ e quem os indica?
+          </div>
+          <div class="flashcard-back">
+            <strong>15 membros</strong>, mandato de 2 anos (1 recondução). Indicações: STF (2 + Presidente nato = 3), STJ (3), TST (3), PGR (2), OAB Federal (2), CD (1 cidadão), SF (1 cidadão). Não tem controle sobre o STF.
+          </div>
+        </div>
+      </div>
+      <!-- F10 -->
+      <div class="flashcard fc-leg" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">
+            <div class="flashcard-label" style="color:var(--accent-leg)">CPI</div>
+            O que uma CPI pode e o que não pode fazer?
+          </div>
+          <div class="flashcard-back">
+            <strong>Pode:</strong> quebrar sigilos bancário, fiscal e telefônico; convocar testemunhas e autoridades; requerer documentos e informações.<br><strong>NÃO pode:</strong> decretar prisão preventiva, realizar busca e apreensão domiciliar, interceptar comunicações em andamento, afastar do cargo (reserva constitucional de jurisdição).
+          </div>
+        </div>
+      </div>
+      <!-- F11 -->
+      <div class="flashcard fc-proc" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">
+            <div class="flashcard-label" style="color:var(--accent-proc)">Veto</div>
+            Como funciona o veto presidencial?
+          </div>
+          <div class="flashcard-back">
+            Prazo: <strong>15 dias úteis</strong>. Pode ser total ou parcial (mas nunca de palavra isolada — deve abranger texto integral de artigo, §, inciso ou alínea). Fundamento: inconstitucionalidade ou contrariedade ao interesse público. A derrubada pelo CN exige <strong>maioria absoluta em sessão conjunta, com votação ostensiva</strong>.
+          </div>
+        </div>
+      </div>
+      <!-- F12 -->
+      <div class="flashcard fc-exe" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">
+            <div class="flashcard-label" style="color:var(--accent-exe)">Executivo</div>
+            O que é a função atípica de natureza legislativa do Executivo?
+          </div>
+          <div class="flashcard-back">
+            O PR exerce função atípica de natureza legislativa ao: editar <strong>Medidas Provisórias</strong> (art. 62) com força de lei; elaborar <strong>Leis Delegadas</strong> (art. 68) mediante delegação do CN; e expedir <strong>decretos autônomos</strong> nas hipóteses do art. 84, VI (organização administrativa que não implique aumento de despesa ou criação de cargos).
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================
+       7. QUESTÕES DE FIXAÇÃO
+       ============================== -->
+  <section id="quiz">
+    <div class="section-header">
+      <div class="section-icon icon-quiz">📝</div>
+      <div>
+        <div class="section-title" style="color:var(--red)">Questões de Fixação</div>
+        <div class="section-subtitle">Clique na alternativa para verificar a resposta</div>
+      </div>
+    </div>
+
+    <div class="score-box">
+      <div class="score-num" id="score-display">0 / 12</div>
+      <div class="score-label">questões respondidas corretamente</div>
+      <br>
+      <button id="btn-reset" onclick="resetQuiz()">↺ Reiniciar questões</button>
+    </div>
+
+    <div id="quiz-container">
+      <!-- Q1 -->
+      <div class="quiz-card" data-q="1">
+        <div class="quiz-num">QUESTÃO 01 — Legislativo</div>
+        <div class="quiz-q">De acordo com a CF/88, o Senado Federal é composto por quantos membros e qual é o sistema de eleição utilizado?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" data-correct="false" onclick="answer(this,1)">a) 513 Senadores, pelo sistema proporcional</button>
+          <button class="quiz-opt" data-correct="true" onclick="answer(this,1)">b) 81 Senadores, sendo 3 por Estado e 3 pelo DF, eleitos pelo sistema majoritário</button>
+          <button class="quiz-opt" data-correct="false" onclick="answer(this,1)">c) 81 Senadores, eleitos pelo sistema proporcional à população</button>
+          <button class="quiz-opt" data-correct="false" onclick="answer(this,1)">d) 81 Senadores, com representação proporcional ao número de municípios</button>
+        </div>
+        <div class="quiz-feedback" id="fb1"></div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="quiz-card" data-q="2">
+        <div class="quiz-num">QUESTÃO 02 — Processo Legislativo</div>
+        <div class="quiz-q">A Emenda Constitucional é aprovada por qual quórum e em quantos turnos?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" data-correct="false" onclick="answer(this,2)">a) Maioria absoluta, em turno único em cada Casa</button>
+          <button class="quiz-opt" data-correct="false" onclick="answer(this,2)">b) Maioria simples, em dois turnos em cada Casa</button>
+          <button class="quiz-opt" data-correct="true" onclick="answer(this,2)">c) 3/5 dos membros em cada Casa, em dois turnos</button>
+          <button class="quiz-opt" data-correct="false" onclick="answer(this,2)">d) 2/3 dos membros em cada Casa, em turno único</button>
+        </div>
+        <div class="quiz-feedback" id="fb2"></div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="quiz-card" data-q="3">
+        <div class="quiz-num">QUESTÃO 03 — Imunidade Parlamentar</div>
+        <div class="quiz-q">Desde quando o parlamentar adquire a imunidade formal processual relativa à prisão?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" data-correct="false" onclick="answer(this,3)">a) Desde a posse no cargo</button>
+          <button class="quiz-opt" data-correct="true" onclick="answer(this,3)">b) Desde a diplomação pela Justiça Eleitoral</button>
+          <button class="quiz-opt" data-correct="false" onclick="answer(this,3)">c) Desde o registro da candidatura</button>
+          <button class="quiz-opt" data-correct="false" onclick="answer(this,3)">d) Desde o início da campanha eleitoral</button>
+        </div>
+        <div class="quiz-feedback" id="fb3"></div>
+      </div>
+
+      <!-- Q4 -->
+      <div class="quiz-card" data-q="4">
+        <div class="quiz-num">QUESTÃO 04 — Medida Provisória</div>
+        <div class="quiz-q">Qual é o prazo de vigência de uma Medida Provisória, incluindo a prorrogação?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" data-correct="false" onclick="answer(this,4)">a) 30 dias, prorrogáveis por mais 30</button>
+          <button class="quiz-opt" data-correct="false" onclick="answer(this,4)">b) 45 dias, prorrogáveis por mais 45</button>
+          <button class="quiz-opt" data-correct="true" onclick="answer(this,4)">c) 60 dias, prorrogáveis por mais 60</button>
+          <button class="quiz-opt" data-correct="false" onclick="answer(this,4)">d) 90 dias, sem possibilidade de prorrogação</button>
+        </div>
+        <div class="quiz-feedback" id="fb4"></div>
+      </div>
+
+      <!-- Q5 -->
+      <div class="quiz-card" data-q="5">
+        <div class="quiz-num">QUESTÃO 05 — Executivo</div>
+        <div class="quiz-q">Para que o Presidente da República possa ser processado por crime comum praticado no exercício do cargo, é necessário:</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" data-correct="false" onclick="answer(this,5)">a) Autorização do Senado Federal por maioria absoluta</button>
+          <button class="quiz-opt" data-correct="true" onclick="answer(this,5)">b) Autorização da Câmara dos Deputados por 2/3 de seus membros</button>
+          <button class="quiz-opt" data-correct="false" onclick="answer(this,5)">c) Autorização do STF por maioria absoluta de seus Ministros</button>
+          <button class="quiz-opt" data-correct="false" onclick="answer(this,5)">d) Autorização do Congresso Nacional em sessão conjunta</button>
+        </div>
+        <div class="quiz-feedback" id="fb5"></div>
+      </div>
+
+      <!-- Q6 -->
+      <div class="quiz-card" data-q="6">
+        <div class="quiz-num">QUESTÃO 06 — Judiciário</div>
+        <div class="quiz-q">Após o prazo de quanto tempo de exercício na magistratura o juiz adquire a vitaliciedade?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" data-correct="false" onclick="answer(this,6)">a) 1 ano</button>
+          <button class="quiz-opt" data-correct="true" onclick="answer(this,6)">b) 2 anos</button>
+          <button class="quiz-opt" data-correct="false" onclick="answer(this,6)">c) 3 anos</button>
+          <button class="quiz-opt" data-correct="false" onclick="answer(this,6)">d) 5 anos</button>
+        </div>
+        <div class="quiz-feedback" id="fb6"></div>
+      </div>
+
+      <!-- Q7 -->
+      <div class="quiz-card" data-q="7">
+        <div class="quiz-num">QUESTÃO 07 — STF</div>
+        <div class="quiz-q">Quantos Ministros compõem o STF e qual é o requisito de aprovação pelo Senado?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" data-correct="false" onclick="answer(this,7)">a) 11 Ministros, aprovados por maioria simples</button>
+          <button class="quiz-opt" data-correct="true" onclick="answer(this,7)">b) 11 Ministros, aprovados por maioria absoluta do Senado</button>
+          <button class="quiz-opt" data-correct="false" onclick="answer(this,7)">c) 13 Ministros, aprovados por 2/3 do Senado</button>
+          <button class="quiz-opt" data-correct="false" onclick="answer(this,7)">d) 11 Ministros, aprovados por 3/5 do Senado</button>
+        </div>
+        <div class="quiz-feedback" id="fb7"></div>
+      </div>
+
+      <!-- Q8 -->
+      <div class="quiz-card" data-q="8">
+        <div class="quiz-num">QUESTÃO 08 — Separação dos Poderes</div>
+        <div class="quiz-q">Assinale a afirmação CORRETA sobre as funções atípicas dos poderes:</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" data-correct="false" onclick="answer(this,8)">a) O exercício de função atípica fere o princípio da separação de poderes</button>
+          <button class="quiz-opt" data-correct="false" onclick="answer(this,8)">b) Somente o Executivo pode exercer funções atípicas</button>
+          <button class="quiz-opt" data-correct="true" onclick="answer(this,8)">c) O Senado julgar o PR nos crimes de responsabilidade é função atípica de natureza jurisdicional do Legislativo</button>
+          <button class="quiz-opt" data-correct="false" onclick="answer(this,8)">d) As funções atípicas só podem ser exercidas mediante delegação expressa do Congresso Nacional</button>
+        </div>
+        <div class="quiz-feedback" id="fb8"></div>
+      </div>
+
+      <!-- Q9 -->
+      <div class="quiz-card" data-q="9">
+        <div class="quiz-num">QUESTÃO 09 — CPI</div>
+        <div class="quiz-q">Em relação às CPIs municipais, o entendimento majoritário do STF é de que:</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" data-correct="false" onclick="answer(this,9)">a) Não podem ser instaladas, pois municípios não possuem Poder Judiciário</button>
+          <button class="quiz-opt" data-correct="false" onclick="answer(this,9)">b) Podem quebrar sigilo bancário da mesma forma que as CPIs federais</button>
+          <button class="quiz-opt" data-correct="true" onclick="answer(this,9)">c) Podem ser instaladas, mas não podem, por si, quebrar sigilo bancário sem autorização judicial</button>
+          <button class="quiz-opt" data-correct="false" onclick="answer(this,9)">d) Podem quebrar sigilo fiscal mas não o bancário</button>
+        </div>
+        <div class="quiz-feedback" id="fb9"></div>
+      </div>
+
+      <!-- Q10 -->
+      <div class="quiz-card" data-q="10">
+        <div class="quiz-num">QUESTÃO 10 — Processo Legislativo Sumário</div>
+        <div class="quiz-q">No processo legislativo sumário (urgência constitucional), qual é o prazo total máximo para apreciação do projeto?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" data-correct="false" onclick="answer(this,10)">a) 60 dias (30 em cada Casa)</button>
+          <button class="quiz-opt" data-correct="false" onclick="answer(this,10)">b) 90 dias (45 + 45)</button>
+          <button class="quiz-opt" data-correct="true" onclick="answer(this,10)">c) 100 dias (45 + 45 + 10 em caso de emenda do SF)</button>
+          <button class="quiz-opt" data-correct="false" onclick="answer(this,10)">d) 120 dias (60 + 60)</button>
+        </div>
+        <div class="quiz-feedback" id="fb10"></div>
+      </div>
+
+      <!-- Q11 -->
+      <div class="quiz-card" data-q="11">
+        <div class="quiz-num">QUESTÃO 11 — CNJ</div>
+        <div class="quiz-q">Qual é o número correto de membros do CNJ e qual é o órgão que NÃO está sujeito ao seu controle?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" data-correct="false" onclick="answer(this,11)">a) 13 membros; o STJ está excluído do controle</button>
+          <button class="quiz-opt" data-correct="true" onclick="answer(this,11)">b) 15 membros; o STF está excluído do controle</button>
+          <button class="quiz-opt" data-correct="false" onclick="answer(this,11)">c) 15 membros; nenhum órgão está excluído do controle</button>
+          <button class="quiz-opt" data-correct="false" onclick="answer(this,11)">d) 11 membros; o STF está excluído do controle</button>
+        </div>
+        <div class="quiz-feedback" id="fb11"></div>
+      </div>
+
+      <!-- Q12 -->
+      <div class="quiz-card" data-q="12">
+        <div class="quiz-num">QUESTÃO 12 — Veto Presidencial</div>
+        <div class="quiz-q">O veto presidencial é superado pelo Congresso Nacional com qual votação?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" data-correct="false" onclick="answer(this,12)">a) Maioria simples, em sessão conjunta, voto secreto</button>
+          <button class="quiz-opt" data-correct="false" onclick="answer(this,12)">b) 2/3 dos membros, em sessão conjunta, voto aberto</button>
+          <button class="quiz-opt" data-correct="true" onclick="answer(this,12)">c) Maioria absoluta dos membros, em sessão conjunta, votação ostensiva (voto aberto)</button>
+          <button class="quiz-opt" data-correct="false" onclick="answer(this,12)">d) 3/5 dos membros, em votação separada por cada Casa</button>
+        </div>
+        <div class="quiz-feedback" id="fb12"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <p>📚 Baseado em <strong>Coleção Esquematizado — Direito Constitucional, 29ª Ed. 2025</strong> — Pedro Lenza<br>
+  Relatório de estudo para prova · CF/88 — Tripartição dos Poderes</p>
+</footer>
+
+<!-- Scroll to Top -->
+<button id="totop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Voltar ao topo">↑</button>
+
+<!-- ===== SCRIPTS ===== -->
+<script>
+  /* ---- NAV ACTIVE ---- */
+  const navLinks = document.querySelectorAll('.nav-inner a');
+  const sections = document.querySelectorAll('section[id]');
+  function updateNav(){
+    let current='';
+    sections.forEach(s=>{
+      if(window.scrollY >= s.offsetTop - 80) current = s.id;
+    });
+    navLinks.forEach(a=>{
+      a.classList.toggle('active', a.getAttribute('href')==='#'+current);
+    });
+  }
+  window.addEventListener('scroll', updateNav);
+  updateNav();
+
+  /* ---- SCROLL TO TOP ---- */
+  const totop = document.getElementById('totop');
+  window.addEventListener('scroll', ()=>{
+    totop.classList.toggle('visible', window.scrollY > 400);
+  });
+
+  /* ---- QUIZ ---- */
+  let scores = {};
+  const feedbacks = {
+    1: 'Correto! O Senado é composto por 81 Senadores (art. 46, CF/88): 3 por Estado + 3 pelo DF. O sistema de eleição é o majoritário.',
+    2: 'Correto! Emenda Constitucional requer 3/5 dos membros em cada Casa, em dois turnos (art. 60, §2º, CF/88). A EC 76/2013 aboliu a votação secreta para a maioria das hipóteses.',
+    3: 'Correto! A imunidade formal para a prisão começa na diplomação (art. 53, §2º, CF/88 — EC 35/2001), antes mesmo da posse.',
+    4: 'Correto! A MP tem vigência de 60 dias, prorrogável por mais 60 (art. 62, §3º, CF/88 — EC 32/2001).',
+    5: 'Correto! Para crimes comuns, é necessária autorização da Câmara dos Deputados por 2/3 dos membros (art. 51, I c/c art. 86, §1º, CF/88). Para crimes de responsabilidade, é o Senado que julga.',
+    6: 'Correto! A vitaliciedade é adquirida após 2 anos de exercício, após o que o magistrado só perde o cargo por sentença judicial transitada em julgado (art. 95, I, CF/88).',
+    7: 'Correto! O STF é composto por 11 Ministros, nomeados pelo PR após aprovação por maioria absoluta do SF (art. 101, CF/88).',
+    8: 'Correto! O julgamento do PR pelo Senado nos crimes de responsabilidade é a função atípica de natureza jurisdicional exercida pelo Legislativo. O exercício de funções atípicas não fere a separação de poderes quando expressamente previsto pela CF.',
+    9: 'Correto! Municípios podem instaurar CPIs, mas, diferentemente dos Estados e do DF, as CPIs municipais não têm poderes para, por ato próprio, determinar a quebra de sigilo bancário (entendimento fundado na posição singular dos Municípios na federação).',
+    10: 'Correto! O processo sumário tem prazo máximo de 100 dias: 45 dias na CD + 45 dias no SF + 10 dias na CD se o SF emendou (art. 64, §§1º-3º, CF/88).',
+    11: 'Correto! O CNJ tem 15 membros (art. 103-B, CF/88). O STF, como órgão de cúpula do Judiciário, não está sujeito ao controle do CNJ.',
+    12: 'Correto! O veto é superado por maioria absoluta dos membros do CN, em sessão conjunta, com votação ostensiva (voto aberto) — EC 76/2013 aboliu o voto secreto para essa hipótese (art. 66, §4º, CF/88).'
+  };
+
+  function answer(btn, qNum){
+    const card = btn.closest('.quiz-card');
+    if(card.classList.contains('answered')) return;
+    card.classList.add('answered');
+    const isCorrect = btn.dataset.correct === 'true';
+    const fb = document.getElementById('fb'+qNum);
+    const opts = card.querySelectorAll('.quiz-opt');
+    opts.forEach(o=>{
+      o.classList.add('disabled');
+      if(o.dataset.correct==='true') o.classList.add('correct');
+    });
+    if(!isCorrect){
+      btn.classList.add('wrong');
+    }
+    fb.textContent = (isCorrect ? '✅ ' : '❌ Resposta incorreta. ') + feedbacks[qNum];
+    fb.className = 'quiz-feedback show ' + (isCorrect ? 'ok' : 'fail');
+    if(isCorrect && !scores[qNum]){
+      scores[qNum] = true;
+    }
+    updateScore();
+  }
+
+  function updateScore(){
+    const n = Object.keys(scores).length;
+    document.getElementById('score-display').textContent = n + ' / 12';
+  }
+
+  function resetQuiz(){
+    scores = {};
+    updateScore();
+    const cards = document.querySelectorAll('.quiz-card');
+    cards.forEach(c=>{
+      c.classList.remove('answered');
+      c.querySelectorAll('.quiz-opt').forEach(o=>{
+        o.classList.remove('correct','wrong','disabled');
+      });
+      const fb = c.querySelector('.quiz-feedback');
+      if(fb) fb.className = 'quiz-feedback';
+    });
+  }
+</script>
+</body>
+</html>
